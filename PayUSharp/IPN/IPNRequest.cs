@@ -272,15 +272,18 @@ namespace PayU.IPN
         }
 
         public string GenerateResponse() {
+            var hash = string.Empty; 
             var now = DateTime.Now.ToString("yyyyMMddHHmmss");
             var hashStr = new StringBuilder();
 
-            AppendToHashString(hashStr, Products[0].Id);
-            AppendToHashString(hashStr, Products[0].Name);
-            AppendToHashString(hashStr,this.Date);
-            AppendToHashString(hashStr, now);
+            if (Products.Length > 0) {
+                AppendToHashString(hashStr, Products[0].Id);
+                AppendToHashString(hashStr, Products[0].Name);
+                AppendToHashString(hashStr,this.Date);
+                AppendToHashString(hashStr, now);
 
-            var hash = hashStr.ToString().HashWithSignature(Configuration.Instance.SignatureKey);
+                hash = hashStr.ToString().HashWithSignature(Configuration.Instance.SignatureKey);
+            }
 
             return string.Format("<{0}>{1}|{2}</{0}>", ROOT_ELEMENT_NAME, now, hash);
         }
