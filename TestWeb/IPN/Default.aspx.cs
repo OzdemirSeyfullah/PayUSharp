@@ -14,7 +14,7 @@ namespace TestWeb.IPN
             var ipn = IPNRequest.FromHttpRequest(Request);
 
             // Do something with the data in the IPNRequest object.
-
+            Response.ContentType = "text/xml";
             Response.Write(ipn.GenerateResponse());
             Response.End();
         }
