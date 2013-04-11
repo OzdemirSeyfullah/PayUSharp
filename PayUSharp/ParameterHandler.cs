@@ -140,11 +140,11 @@ namespace PayU
         {
             var hashString = GetHashString();
 
-            Console.WriteLine("Hash String: {0}", hashString);
+            //Console.WriteLine("Hash String: {0}", hashString);
 
             var hash = hashString.HashWithSignature(Configuration.Instance.SignatureKey);
 
-            Console.WriteLine("Hash: {0}", hash);
+            //Console.WriteLine("Hash: {0}", hash);
             
             Parameters["ORDER_HASH"].First().Value = hash;
             

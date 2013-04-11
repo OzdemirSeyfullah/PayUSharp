@@ -15,7 +15,7 @@ namespace TestWeb
             Configuration.Instance
                 .SetSignatureKey("SECRET_KEY")
                 .SetEnvironment("https://secure.payuodeme.com/order/")
-                .SetIgnoreSSLCertificate(true);
+                .SetIgnoreSSLCertificate(true); // Don't do this on production.
             
             var parameters = new OrderDetails();
             

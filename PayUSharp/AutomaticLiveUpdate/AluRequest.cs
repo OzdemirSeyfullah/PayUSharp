@@ -26,7 +26,7 @@ namespace PayU.AutomaticLiveUpdate
 
             var response = SendRequest(parameterHandler);
 
-            Console.WriteLine("Response: {0}", response);
+            //Console.WriteLine("Response: {0}", response);
 
             return AluResponse.FromString(response);
         }
