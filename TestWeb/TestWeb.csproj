@@ -44,6 +44,7 @@
     <Content Include="AutomaticLiveUpdate\ThreeDS.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="LiveUpdate\OrderComplete.aspx" />
+    <Content Include="IPN\Default.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -73,6 +74,12 @@
     </Compile>
     <Compile Include="LiveUpdate\OrderComplete.aspx.designer.cs">
       <DependentUpon>OrderComplete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IPN\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IPN\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

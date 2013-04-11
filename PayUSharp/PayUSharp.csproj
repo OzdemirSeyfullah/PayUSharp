@@ -61,6 +61,9 @@
     <Compile Include="AutomaticLiveUpdate\OrderDetails.cs" />
     <Compile Include="LiveUpdate\LiveUpdateRequest.cs" />
     <Compile Include="HashHelper.cs" />
+    <Compile Include="IPN\IPNRequest.cs" />
+    <Compile Include="IPN\IPNOrderStatus.cs" />
+    <Compile Include="IPN\IPNProduct.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
