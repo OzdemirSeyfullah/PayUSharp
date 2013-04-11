@@ -18,12 +18,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">PayU Türkiye</a>
+          <a class="brand" href="/">PayU Türkiye</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
               <li><a href="/AutomaticLiveUpdate/Default.aspx">ALU Demo</a></li>
               <li><a href="/LiveUpdate/Default.aspx">LU Demo</a></li>
+              <li><a href="/IPN/Default.aspx">IPN Demo</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
