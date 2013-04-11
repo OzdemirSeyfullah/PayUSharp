@@ -60,6 +60,7 @@
     <Compile Include="AutomaticLiveUpdate\DeliveryDetails.cs" />
     <Compile Include="AutomaticLiveUpdate\OrderDetails.cs" />
     <Compile Include="LiveUpdate\LiveUpdateRequest.cs" />
+    <Compile Include="HashHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -37,9 +37,8 @@ namespace TestWeb.LiveUpdate
                 Information = "London Flight"
             });
 
-            order.ShippingCosts = 2M;
+            order.ShippingCosts = 0M;
             order.PricesCurrency = "TRY";
-//            order.PaymentMethod = "";
             order.DestinationCity = "Ankara";
             order.DestinationState = "Ankara";
             order.DestinationCountry = "TR";
@@ -54,7 +53,10 @@ namespace TestWeb.LiveUpdate
                 State = "Istanbul", //Sehir
                 CountryCode = "TR"
             };
-            
+
+            order.AutoMode = true;
+            order.ReturnUrl = string.Format("~/LiveUpdate/OrderComplete.aspx?orderid={0}", order.OrderRef).ToAbsoluteUrl();
+
             var request = new LiveUpdateRequest(order);
 
             ltrLiveUpdateForm.Text = request.RenderPaymentForm("Ödeme Yap");

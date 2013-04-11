@@ -10,31 +10,6 @@ namespace TestWeb
 {
     public partial class Default : System.Web.UI.Page
     {
-        /// <summary>
-        /// Converts the provided app-relative path into an absolute Url containing the full host name
-        /// </summary>
-        /// <param name="relativeUrl">App-Relative path</param>
-        /// <returns>Provided relativeUrl parameter as fully qualified Url</returns>
-        /// <example>~/path/to/foo to http://www.web.com/path/to/foo</example>
-        public static string ToAbsoluteUrl(string relativeUrl) {
-            if (string.IsNullOrEmpty(relativeUrl))
-                return relativeUrl;
-            
-            if (HttpContext.Current == null)
-                return relativeUrl;
-            
-            if (relativeUrl.StartsWith("/"))
-                relativeUrl = relativeUrl.Insert(0, "~");
-            if (!relativeUrl.StartsWith("~/"))
-                relativeUrl = relativeUrl.Insert(0, "~/");
-            
-            var url = HttpContext.Current.Request.Url;
-            var port = url.Port != 80 ? (":" + url.Port) : String.Empty;
-            
-            return String.Format("{0}://{1}{2}{3}",
-                                 url.Scheme, url.Host, port, VirtualPathUtility.ToAbsolute(relativeUrl));
-        }
-
         public virtual void button1Clicked (object sender, EventArgs args)
         {
             Configuration.Instance
@@ -100,7 +75,7 @@ namespace TestWeb
                 State = "State / Dept.", //optional
                 CountryCode = "TR" //optional
             };
-            parameters.ReturnUrl = ToAbsoluteUrl("~/AutomaticLiveUpdate/ThreeDS.aspx");
+            parameters.ReturnUrl = "~/AutomaticLiveUpdate/ThreeDS.aspx".ToAbsoluteUrl();
             parameters.ClientIpAddress = Request.UserHostAddress;
             //request.ClientTime = DateTime.UtcNow; // optional
             parameters.SelectedInstallmentNumber = Convert.ToInt32(ddlInstallmentCount.SelectedValue);

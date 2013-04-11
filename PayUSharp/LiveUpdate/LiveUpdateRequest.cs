@@ -52,6 +52,22 @@ namespace PayU.LiveUpdate
 
             return sb.ToString();
         }
+
+        public static bool VerifyControlSignature (System.Web.HttpRequest request)
+        {
+            var ctrl = request.QueryString["ctrl"];
+
+            if (string.IsNullOrEmpty(ctrl)) {
+                return false;
+            }
+
+            var url = request.Url.ToString().Replace("&ctrl=" + ctrl, "").Replace("?ctrl=" + ctrl, "");
+
+            var hashString = url.Length.ToString() + url;
+            var hash = hashString.HashWithSignature(Configuration.Instance.SignatureKey);
+
+            return hash == ctrl.ToLowerInvariant();
+        }
     }
 }
 

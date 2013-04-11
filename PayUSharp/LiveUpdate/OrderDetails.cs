@@ -66,6 +66,9 @@ namespace PayU.LiveUpdate
         [Parameter(Name = "LANGUAGE", ExcludeFromHash = true)]
         public Language? Language { get; set; }
 
+        [Parameter(Name = "AUTOMODE", ExcludeFromHash = true)]
+        public bool? AutoMode { get; set; }    
+
         [Parameter(Name = "ORDER_TIMEOUT", ExcludeFromHash = true)]
         public int? OrderTimeout { get; set; }    
 

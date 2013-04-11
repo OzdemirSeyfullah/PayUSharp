@@ -11,7 +11,7 @@
 namespace TestWeb {
 	
 	
-	public partial class ThreeDS {
+	public partial class OrderComplete {
 		
 		protected System.Web.UI.WebControls.Literal ltrOutput;
 	}

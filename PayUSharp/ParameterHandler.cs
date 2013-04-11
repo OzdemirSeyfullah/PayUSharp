@@ -142,12 +142,7 @@ namespace PayU
 
             Console.WriteLine("Hash String: {0}", hashString);
 
-            var binaryHash = new HMACMD5(Encoding.UTF8.GetBytes(Configuration.Instance.SignatureKey))
-                .ComputeHash(Encoding.UTF8.GetBytes(hashString));
- 
-            var hash = BitConverter.ToString(binaryHash)
-                                   .Replace("-", string.Empty)
-                                   .ToLowerInvariant();
+            var hash = hashString.HashWithSignature(Configuration.Instance.SignatureKey);
 
             Console.WriteLine("Hash: {0}", hash);
             

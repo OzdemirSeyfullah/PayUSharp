@@ -43,6 +43,7 @@
     <Content Include="AutomaticLiveUpdate\Default.aspx" />
     <Content Include="AutomaticLiveUpdate\ThreeDS.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="LiveUpdate\OrderComplete.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -65,6 +66,13 @@
     </Compile>
     <Compile Include="AutomaticLiveUpdate\ThreeDS.aspx.designer.cs">
       <DependentUpon>ThreeDS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Code\SringExtension.cs" />
+    <Compile Include="LiveUpdate\OrderComplete.aspx.cs">
+      <DependentUpon>OrderComplete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LiveUpdate\OrderComplete.aspx.designer.cs">
+      <DependentUpon>OrderComplete.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -90,5 +98,7 @@
   <ItemGroup>
     <Folder Include="LiveUpdate\" />
     <Folder Include="AutomaticLiveUpdate\" />
+    <Folder Include="Code\" />
+    <Folder Include="IPN\" />
   </ItemGroup>
 </Project>
