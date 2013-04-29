@@ -46,37 +46,37 @@ namespace PayU.AutomaticLiveUpdate
         private const string ROOT_ELEMENT_NAME = "EPAYMENT";
 
         [XmlElement("REFNO")]
-        public string RefNo { get; protected set; }
+        public string RefNo { get; set; }
 
         [XmlElement("ALIAS")]
-        public string Alias { get; protected set; }
+        public string Alias { get; set; }
 
         [XmlElement("STATUS")]
-        public Status Status { get; protected set; }
+        public Status Status { get; set; }
 
         [XmlElement("RETURN_CODE")]
-        public ReturnCode ReturnCode { get; protected set; }
+        public ReturnCode ReturnCode { get; set; }
 
         [XmlElement("RETURN_MESSAGE")]
-        public string ReturnMessage { get; protected set; }
+        public string ReturnMessage { get; set; }
 
         [XmlElement("DATE")]
-        public string Date { get; protected set; }
+        public string Date { get; set; }
 
         [XmlElement("CURRENCY")]
-        public string Currency { get; protected set; }
+        public string Currency { get; set; }
 
         [XmlElement("INSTALLMENTS_NO")]
-        public string InstallmentNumber { get; protected set; }
+        public string InstallmentNumber { get; set; }
 
         [XmlElement("CARD_PROGRAM_NAME")]
-        public string CardProgramName { get; protected set; }
+        public string CardProgramName { get; set; }
 
         [XmlElement("URL_3DS")]
-        public string Url3DS { get; protected set; }
+        public string Url3DS { get; set; }
 
         [XmlElement("HASH")]
-        public string Hash { get; protected set; }
+        public string Hash { get; set; }
 
         public bool IsSuccess
         {

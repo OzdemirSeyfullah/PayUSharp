@@ -20,10 +20,10 @@ namespace PayU.IPN
         /* Products */
         [XmlArray(PRODUCTS_ELEMENT_NAME)]
         [XmlArrayItem(PRODUCT_ELEMENT_NAME, typeof(IPNProduct))]
-        public IPNProduct[] Products { get; protected set;}
+        public IPNProduct[] Products { get; set;}
 
         [XmlElement("SALEDATE")]
-        public string SaleDateAsString { get; protected set; }
+        public string SaleDateAsString { get; set; }
 
         [XmlIgnore]
         public DateTime SaleDate {
@@ -31,7 +31,7 @@ namespace PayU.IPN
         }
 
         [XmlElement("PAYMENTDATE")]
-        public string PaymentDateAsString { get; protected set; }
+        public string PaymentDateAsString { get; set; }
 
         [XmlIgnore]
         public DateTime PaymentDate {
@@ -39,7 +39,7 @@ namespace PayU.IPN
         }
 
         [XmlElement("COMPLETE_DATE")]
-        public string CompleteDateAsString { get; protected set; }
+        public string CompleteDateAsString { get; set; }
 
         [XmlIgnore]
         public DateTime CompleteDate {
@@ -47,145 +47,145 @@ namespace PayU.IPN
         }
 
         [XmlElement("REFNO")]
-        public string ReferenceNumber { get; protected set; }
+        public string ReferenceNumber { get; set; }
 
         [XmlElement("REFNOEXT")]
-        public string SellerReferenceNumber { get; protected set; }
+        public string SellerReferenceNumber { get; set; }
 
         [XmlElement("ORDERNO")]
-        public string OrderNumber { get; protected set; }
+        public string OrderNumber { get; set; }
 
         [XmlElement("ORDERSTATUS")]
-        public IPNOrderStatus OrderStatus { get; protected set; }
+        public IPNOrderStatus OrderStatus { get; set; }
 
         [XmlElement("PAYMETHOD")]
-        public string PaymentMethod { get; protected set; }
+        public string PaymentMethod { get; set; }
         
         [XmlElement("PAYMETHOD_CODE")]
-        public string PaymentMethodCode { get; protected set; }
+        public string PaymentMethodCode { get; set; }
         
         [XmlElement("IPN_PAID_AMOUNT")]
-        public decimal TotalPaidAmount { get; protected set; }
+        public decimal TotalPaidAmount { get; set; }
         
         [XmlElement("IPN_INSTALLMENTS_PROGRAM")]
-        public string InstallmentProgramName { get; protected set; }
+        public string InstallmentProgramName { get; set; }
         
         [XmlElement("IPN_INSTALLMENTS_NUMBER")]
-        public int InstallmentNumber { get; protected set; }
+        public int InstallmentNumber { get; set; }
         
         [XmlElement("IPN_INSTALLMENTS_PROFIT")]
-        public string InstallmentProfit { get; protected set; }
+        public string InstallmentProfit { get; set; }
         
         [XmlElement("FIRSTNAME")]
-        public string FirstName { get; protected set; }
+        public string FirstName { get; set; }
         
         [XmlElement("LASTNAME")]
-        public string LastName { get; protected set; }
+        public string LastName { get; set; }
         
         [XmlElement("IDENTITY_NO")]
-        public string IdentityNumber { get; protected set; }
+        public string IdentityNumber { get; set; }
         
         [XmlElement("IDENTITY_ISSUER")]
-        public string IdentityIssuer { get; protected set; }
+        public string IdentityIssuer { get; set; }
         
         [XmlElement("IDENTITY_CNP")]
-        public string IdentityCNP { get; protected set; }
+        public string IdentityCNP { get; set; }
         
         [XmlElement("COMPANY")]
-        public string Company { get; protected set; }
+        public string Company { get; set; }
         
         [XmlElement("REGISTRATIONNUMBER")]
-        public string RegistrationNumber { get; protected set; }
+        public string RegistrationNumber { get; set; }
         
         [XmlElement("FISCALCODE")]
-        public string FiscalCode { get; protected set; }
+        public string FiscalCode { get; set; }
         
         [XmlElement("CBANKNAME")]
-        public string CompanyBankName { get; protected set; }
+        public string CompanyBankName { get; set; }
         
         [XmlElement("CBANKACCOUNT")]
-        public string CompanyBankAccount { get; protected set; }
+        public string CompanyBankAccount { get; set; }
         
         [XmlElement("ADDRESS1")]
-        public string Address1 { get; protected set; }
+        public string Address1 { get; set; }
         
         [XmlElement("ADDRESS2")]
-        public string Address2 { get; protected set; }
+        public string Address2 { get; set; }
         
         [XmlElement("CITY")]
-        public string City { get; protected set; }
+        public string City { get; set; }
         
         [XmlElement("STATE")]
-        public string State { get; protected set; }
+        public string State { get; set; }
         
         [XmlElement("ZIPCODE")]
-        public string ZipCode { get; protected set; }
+        public string ZipCode { get; set; }
         
         [XmlElement("COUNTRY")]
-        public string Country { get; protected set; }
+        public string Country { get; set; }
         
         [XmlElement("PHONE")]
-        public string PhoneNumber { get; protected set; }
+        public string PhoneNumber { get; set; }
         
         [XmlElement("FAX")]
-        public string FaxNumber { get; protected set; }
+        public string FaxNumber { get; set; }
         
         [XmlElement("CUSTOMEREMAIL")]
-        public string CustomerEmail { get; protected set; }
+        public string CustomerEmail { get; set; }
         
         [XmlElement("FIRSTNAME_D")]
-        public string DeliveryFirstName { get; protected set; }
+        public string DeliveryFirstName { get; set; }
         
         [XmlElement("LASTNAME_D")]
-        public string DeliveryLastName { get; protected set; }
+        public string DeliveryLastName { get; set; }
         
         [XmlElement("COMPANY_D")]
-        public string DeliveryCompany { get; protected set; }
+        public string DeliveryCompany { get; set; }
         
         [XmlElement("ADDRESS1_D")]
-        public string DeliveryAddress1 { get; protected set; }
+        public string DeliveryAddress1 { get; set; }
         
         [XmlElement("ADDRESS2_D")]
-        public string DeliveryAddress2 { get; protected set; }
+        public string DeliveryAddress2 { get; set; }
         
         [XmlElement("CITY_D")]
-        public string DeliveryCity { get; protected set; }
+        public string DeliveryCity { get; set; }
         
         [XmlElement("STATE_D")]
-        public string DeliveryState { get; protected set; }
+        public string DeliveryState { get; set; }
         
         [XmlElement("ZIPCODE_D")]
-        public string DeliveryZipCode { get; protected set; }
+        public string DeliveryZipCode { get; set; }
         
         [XmlElement("COUNTRY_D")]
-        public string DeliveryCountry { get; protected set; }
+        public string DeliveryCountry { get; set; }
         
         [XmlElement("PHONE_D")]
-        public string DeliveryPhoneNumber { get; protected set; }
+        public string DeliveryPhoneNumber { get; set; }
         
         [XmlElement("IPADDRESS")]
-        public string IpAddress { get; protected set; }
+        public string IpAddress { get; set; }
         
         [XmlElement("CURRENCY")]
-        public string Currency { get; protected set; }
+        public string Currency { get; set; }
 
         [XmlElement("IPN_TOTALGENERAL")]
-        public decimal TotalGeneral { get; protected set; }
+        public decimal TotalGeneral { get; set; }
         
         [XmlElement("IPN_SHIPPING")]
-        public decimal Shipping { get; protected set; }
+        public decimal Shipping { get; set; }
         
         [XmlElement("IPN_GLOBALDISCOUNT")]
-        public decimal GlobalDiscount { get; protected set; }
+        public decimal GlobalDiscount { get; set; }
         
         [XmlElement("IPN_COMMISSION")]
-        public decimal Commission { get; protected set; }
+        public decimal Commission { get; set; }
         
         [XmlElement("IPN_DATE")]
-        public string Date { get; protected set; }
+        public string Date { get; set; }
         
         [XmlElement("HASH")]
-        public string Hash { get; protected set; }
+        public string Hash { get; set; }
 
         /* Public Methods */
 

@@ -11,40 +11,40 @@ namespace PayU.IPN
 {
     public class IPNProduct {
         [XmlElement("IPN_PID")]
-        public string Id { get; protected set; }
+        public string Id { get; set; }
 
         [XmlElement("IPN_PNAME")]
-        public string Name { get; protected set; }
+        public string Name { get; set; }
         
         [XmlElement("IPN_PCODE")]
-        public string Code { get; protected set; }
+        public string Code { get; set; }
         
         [XmlElement("IPN_INFO")]
-        public string Information { get; protected set; }
+        public string Information { get; set; }
         
         [XmlElement("IPN_QTY")]
-        public int Quantity { get; protected set; }
+        public int Quantity { get; set; }
         
         [XmlElement("IPN_PRICE")]
-        public decimal Price { get; protected set; }
+        public decimal Price { get; set; }
         
         [XmlElement("IPN_VAT")]
-        public decimal Vat { get; protected set; }
+        public decimal Vat { get; set; }
         
         [XmlElement("IPN_VER")]
-        public string Version { get; protected set; }
+        public string Version { get; set; }
         
         [XmlElement("IPN_DISCOUNT")]
-        public decimal Discount { get; protected set; }
+        public decimal Discount { get; set; }
         
         [XmlElement("IPN_PROMONAME")]
-        public string PromotionName { get; protected set; }
+        public string PromotionName { get; set; }
         
         [XmlElement("IPN_DELIVEREDCODES[]")]
-        public string DeliveredCodes { get; protected set; }
+        public string DeliveredCodes { get; set; }
         
         [XmlElement("IPN_TOTAL[]")]
-        public string Total { get; protected set; }
+        public string Total { get; set; }
 
     }
     
