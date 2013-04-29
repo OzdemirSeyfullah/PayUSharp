@@ -3,6 +3,7 @@ using System.Web;
 using System.Xml.Serialization;
 using System.Text;
 using System.Xml;
+using System;
 
 namespace PayU.AutomaticLiveUpdate
 {
@@ -15,30 +16,19 @@ namespace PayU.AutomaticLiveUpdate
 	    InputError
 	}
 
-	public enum ReturnCode {
-		[XmlEnum("AUTHORIZED")]
-		Authorized,
-		[XmlEnum("3DS_ENROLLED")]
-		ThreeDSEnrolled,
-		[XmlEnum("ALREADY_AUTHORIZED")]
-		AlreadyAuthorized,
-		[XmlEnum("AUTHORIZATION_FAILED")]
-		AuthorizationFailed,
-		[XmlEnum("INVALID_CUSTOMER_INFO")]
-		InvalidCustomerInfo,
-		[XmlEnum("INVALID_PAYMENT_INFO")]
-		InvalidPaymentInfo,
-		[XmlEnum("INVALID_ACCOUNT")]
-		InvalidAccount,
-		[XmlEnum("INVALID_PAYMENT_METHOD_CODE")]
-		InvalidPaymentMethodCode,
-		[XmlEnum("INVALID_CURRENCY")]
-		InvalidCurrency,
-		[XmlEnum("REQUEST_EXPIRED")]
-		RequestExpired,
-		[XmlEnum("HASH_MISMATCH")]
-		HashMismatch
-	}
+    public static class ReturnCodes {
+        public static string Authorized = "AUTHORIZED";
+        public static string ThreeDSEnrolled = "3DS_ENROLLED";
+        public static string AlreadyAuthorized = "ALREADY_AUTHORIZED";
+        public static string AuthorizationFailed = "AUTHORIZATION_FAILED";
+        public static string InvalidCustomerInfo= "INVALID_CUSTOMER_INFO";
+        public static string InvalidPaymentInfo = "INVALID_PAYMENT_INFO";
+        public static string InvalidAccount = "INVALID_ACCOUNT";
+        public static string InvalidPaymentMethodCode = "INVALID_PAYMENT_METHOD_CODE";
+        public static string InvalidCurrency = "INVALID_CURRENCY";
+        public static string RequestExpired = "REQUEST_EXPIRED";
+        public static string HashMismatch = "HASH_MISMATCH";
+    }
 
     [XmlRoot(ROOT_ELEMENT_NAME)]
     public class AluResponse
@@ -55,7 +45,7 @@ namespace PayU.AutomaticLiveUpdate
         public Status Status { get; set; }
 
         [XmlElement("RETURN_CODE")]
-        public ReturnCode ReturnCode { get; set; }
+        public string ReturnCode { get; set; }
 
         [XmlElement("RETURN_MESSAGE")]
         public string ReturnMessage { get; set; }
@@ -86,7 +76,7 @@ namespace PayU.AutomaticLiveUpdate
         public bool Is3DSReponse {
             get 
             { 
-                return (ReturnCode == ReturnCode.ThreeDSEnrolled &&
+                return (ReturnCode == ReturnCodes.ThreeDSEnrolled &&
                         Url3DS != null && 
                         Url3DS != string.Empty);
             }
