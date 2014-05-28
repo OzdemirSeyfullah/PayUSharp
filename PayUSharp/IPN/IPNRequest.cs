@@ -282,7 +282,7 @@ namespace PayU.IPN
 
         private static void AppendToHashString(StringBuilder sb, object data) {
             var str = data.ToString();
-            sb.Append(str.Length);
+            sb.Append(Encoding.UTF8.GetByteCount(str));
             sb.Append(str);
         }
 
