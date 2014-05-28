@@ -294,7 +294,7 @@ namespace PayU.IPN
             if (Products.Length > 0) {
                 AppendToHashString(hashStr, Products[0].Id);
                 AppendToHashString(hashStr, Products[0].Name);
-                AppendToHashString(hashStr,this.Date);
+                AppendToHashString(hashStr, this.Date);
                 AppendToHashString(hashStr, now);
 
                 hash = hashStr.ToString().HashWithSignature(Configuration.Instance.SignatureKey);
