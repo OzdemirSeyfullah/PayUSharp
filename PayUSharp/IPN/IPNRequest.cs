@@ -211,25 +211,39 @@ namespace PayU.IPN
 
         private static string ConvertRequestFormToXml(NameValueCollection parameters) {
             StringBuilder xml = new StringBuilder ();
-            var regex = new Regex(@"^([^\[]+)\[(\d+)\]$");
+            var regex = new Regex(@"^([^\[]+)\[(\d*)\]$");
             var formData = parameters
                     .AllKeys
                     .Select(k => new { Key = k, Match = regex.Match(k)})
-                    .Select(item => new { 
-                        IsArray = item.Match.Success, // Does it match the array pattern
-                        Key = item.Match.Success ? item.Match.Groups[1].Value : item.Key, // Sanitize the key 
-                        Value = parameters[item.Key], // Extract the value
-                        Index = item.Match.Success ? item.Match.Groups[2].Value : null // Grab the array index if it is an array
-                    });
+                    .SelectMany(item => parameters.GetValues(item.Key)
+                        .Select((value, index) => {
+                                string idx = null;
+                                if (item.Match.Success) {
+                                    idx = item.Match.Groups[2].Value;
+                                    if (string.IsNullOrEmpty(idx)) {
+                                        idx = string.Format("FakeIndex-{0}", index);
+                                    }
+                                }
+                                return new { 
+                                    IsArray = item.Match.Success, // Does it match the array pattern
+                                    Key = item.Match.Success ? item.Match.Groups[1].Value : item.Key, // Sanitize the key 
+                                    Value = value, // Extract the value
+                                    Index = idx // Grab the array index if it is an array
+                                };
+                        })
+                );
 
-            var arrayPairGroups = formData
-                .Where(item => item.IsArray)
+            var singleItems = formData.Where (item => !item.IsArray);
+            var arrayItems  = formData.Where (item => item.IsArray);
+
+
+            var arrayPairGroups = arrayItems
                 .GroupBy(item => item.Index);
-
+                
             using (var writer = XmlWriter.Create(xml)) {
                 writer.WriteStartElement(ROOT_ELEMENT_NAME);
                 // First write out all the non-array key/values
-                foreach (var item in formData.Where(item => !item.IsArray)) {
+                foreach (var item in singleItems) {
                     if (string.IsNullOrEmpty(item.Key))
                         continue;
                     writer.WriteStartElement(item.Key);
@@ -257,6 +271,7 @@ namespace PayU.IPN
                     // Close the Product tag
                     writer.WriteEndElement();
                 }
+
                 // Close the Products tag
                 writer.WriteEndElement();
                 
