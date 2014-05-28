@@ -3,7 +3,7 @@ using System.Web;
 
 namespace TestWeb
 {
-    public static class SringExtension
+    public static class StringExtension
     {
         /// <summary>
         /// Converts the provided app-relative path into an absolute Url containing the full host name

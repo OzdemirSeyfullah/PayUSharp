@@ -67,7 +67,6 @@
     <Compile Include="AutomaticLiveUpdate\ThreeDS.aspx.designer.cs">
       <DependentUpon>ThreeDS.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Code\SringExtension.cs" />
     <Compile Include="LiveUpdate\OrderComplete.aspx.cs">
       <DependentUpon>OrderComplete.aspx</DependentUpon>
     </Compile>
@@ -80,6 +79,7 @@
     <Compile Include="IPN\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Code\StringExtension.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
