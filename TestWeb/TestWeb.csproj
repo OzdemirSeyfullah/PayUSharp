@@ -85,13 +85,8 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
     <MonoDevelop>
-      <Properties VerifyCodeBehindFields="True" VerifyCodeBehindEvents="True">
+      <Properties>
         <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
-        <WebDeployTargets>
-          <Target Name="">
-            <FileCopier Handler="MonoDevelop.Deployment.SshFuseFileCopyHandler" TargetDirectory="deploy@176.58.110.158:/home/deploy/webapps/payu" ExtraMountArguments="" ctype="SshFuseFileCopyConfiguration" />
-          </Target>
-        </WebDeployTargets>
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
