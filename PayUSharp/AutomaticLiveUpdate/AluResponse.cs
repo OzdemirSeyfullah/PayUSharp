@@ -73,7 +73,7 @@ namespace PayU.AutomaticLiveUpdate
             get { return Status == Status.Success; }
         }
 
-        public bool Is3DSReponse {
+        public bool Is3DSResponse {
             get 
             { 
                 return (ReturnCode == ReturnCodes.ThreeDSEnrolled &&

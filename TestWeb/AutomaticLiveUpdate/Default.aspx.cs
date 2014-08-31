@@ -85,7 +85,7 @@ namespace TestWeb
             try {
                 var response = AluRequest.ProcessPayment(parameters);
 
-                if (response.Is3DSReponse) {
+                if (response.Is3DSResponse) {
                     Response.Redirect (response.Url3DS);
                     Response.End();
                 }
