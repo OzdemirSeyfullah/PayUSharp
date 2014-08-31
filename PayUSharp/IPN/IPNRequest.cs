@@ -187,6 +187,15 @@ namespace PayU.IPN
         [XmlElement("HASH")]
         public string Hash { get; set; }
 
+        [XmlElement("IPN_CC_TOKEN")]
+        public string CreditCardToken { get; set; }
+
+        [XmlElement("IPN_CC_MASK")]
+        public string CreditCardMask { get; set; }
+
+        [XmlElement("IPN_CC_EXP_DATE")]
+        public string CreditCardExpiryDate { get; set; }
+
         /* Public Methods */
 
         public static IPNRequest FromString(string response)
