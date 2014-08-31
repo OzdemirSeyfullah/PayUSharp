@@ -54,7 +54,10 @@ namespace TestApp
                 {"IPN_PAID_AMOUNT", "1223.29"},
                 {"IPN_INSTALLMENTS_PROGRAM", "BONUS"},
                 {"IPN_INSTALLMENTS_NUMBER", "12"},
-                {"IPN_INSTALLMENTS_PROFIT", "3.26"}
+                {"IPN_INSTALLMENTS_PROFIT", "3.26"},
+                {"IPN_CC_TOKEN", "6121191"},
+                {"IPN_CC_MASK", "xxxx-xxxx-xxxx-1111"},
+                {"IPN_CC_EXP_DATE", "2012-07-18"}
             };
             
             var ipn = IPNRequest.FromNameValueCollection(form);

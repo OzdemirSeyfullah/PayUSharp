@@ -15,6 +15,10 @@ namespace TestApp
             var order = new OrderDetails();
 
             order.Merchant = "OPU_TEST";
+
+            order.TokenEnable = true;
+            order.TokenType = PayU.Base.TokenType.PAY_ON_TIME;
+
             order.OrderRef = "EXT_" + new Random().Next(100000, 999999).ToString();
             order.OrderDate = DateTime.Now;
             order.ProductDetails.Add(new ProductDetails

@@ -15,8 +15,10 @@ namespace TestApp
         {
             Console.WriteLine("======= Running the ALU Test =======");
             ALUTest.Run();
+
             Console.WriteLine("======= Running the LU  Test =======");
             LUTest.Run();
+
             Console.WriteLine("======= Running the IPN Test =======");
             IPNTest.Run();
 
