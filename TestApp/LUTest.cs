@@ -16,6 +16,9 @@ namespace TestApp
             order.Merchant = "PAYUDEMO";
             order.OrderRef = "6112457";
 
+            order.TokenEnable = true;
+            order.TokenType = PayU.Base.TokenType.PAY_ON_TIME;
+
             order.ProductDetails.Add(new ProductDetails
             {
                 Code = "Product code",

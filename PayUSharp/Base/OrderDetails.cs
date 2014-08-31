@@ -3,6 +3,12 @@ using System.Collections.Generic;
 
 namespace PayU.Base
 {
+    public enum TokenType 
+    {
+      PAY_ON_TIME,
+      PAY_BY_CLICK
+    }
+
     public class OrderDetails
     {
         public OrderDetails()
@@ -17,6 +23,12 @@ namespace PayU.Base
         [Parameter(Name = "MERCHANT", SortIndex = 10)]
         public string Merchant { get; set; }
         
+        [Parameter(Name = "LU_ENABLE_TOKEN", SortIndex = 15, ExcludeFromHash = true)]
+        public bool? TokenEnable { get; set; }
+
+        [Parameter(Name = "LU_TOKEN_TYPE", SortIndex = 16, ExcludeFromHash = true)]
+        public TokenType TokenType { get; set; }
+
         [Parameter(Name = "ORDER_REF", SortIndex = 20)]
         public string OrderRef { get; set; }
         
