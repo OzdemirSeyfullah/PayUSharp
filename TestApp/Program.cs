@@ -22,6 +22,9 @@ namespace TestApp
             Console.WriteLine("======= Running the IPN Test =======");
             IPNTest.Run();
 
+            Console.WriteLine("======= Running the TOKEN Test =======");
+            TokenTest.Run();
+
             Console.WriteLine("");
             Console.WriteLine("");
 

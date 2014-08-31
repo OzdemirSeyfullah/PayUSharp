@@ -35,6 +35,9 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\deps\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
@@ -62,6 +65,9 @@
     <Compile Include="IPN\IPNRequest.cs" />
     <Compile Include="IPN\IPNOrderStatus.cs" />
     <Compile Include="IPN\IPNProduct.cs" />
+    <Compile Include="Token\TokenRequest.cs" />
+    <Compile Include="Token\TokenResponse.cs" />
+    <Compile Include="Token\TokenService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -75,5 +81,6 @@
     <Folder Include="IPN\" />
     <Folder Include="Base\" />
     <Folder Include="LiveUpdate\" />
+    <Folder Include="Token\" />
   </ItemGroup>
 </Project>

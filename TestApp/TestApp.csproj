@@ -39,6 +39,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\deps\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -46,6 +49,7 @@
     <Compile Include="ALUTest.cs" />
     <Compile Include="LUTest.cs" />
     <Compile Include="IPNTest.cs" />
+    <Compile Include="TokenTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
