@@ -40,10 +40,10 @@ namespace PayU.IPN
         [XmlElement("IPN_PROMONAME")]
         public string PromotionName { get; set; }
         
-        [XmlElement("IPN_DELIVEREDCODES[]")]
+        [XmlElement("IPN_DELIVEREDCODES")]
         public string DeliveredCodes { get; set; }
         
-        [XmlElement("IPN_TOTAL[]")]
+        [XmlElement("IPN_TOTAL")]
         public string Total { get; set; }
 
     }
