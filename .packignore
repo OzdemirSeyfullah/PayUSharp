@@ -1,0 +1,13 @@
+.git
+*.mdb
+pack.sh
+*.txt
+*.md
+.DS_Store
+*.userprefs
+Debug
+obj
+dist
+DocGen
+docs/fields
+docs/services
