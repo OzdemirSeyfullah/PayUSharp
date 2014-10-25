@@ -200,7 +200,6 @@ namespace PayU.IPN
 
         public static IPNRequest FromString(string response)
         {
-            //Console.WriteLine("Xml String is: '{0}'", response);
             using (var stringReader = new StringReader(response))
                 return new XmlSerializer(typeof(IPNRequest)).Deserialize(stringReader) as IPNRequest;
         }
