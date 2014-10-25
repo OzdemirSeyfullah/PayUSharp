@@ -18,12 +18,13 @@ namespace PayU.Token
       this.EndpointUrl = EndpointUrl ?? DefaultEndpoint;
     }
 
-    public TokenResponse NewSale(string Token, decimal Amount, string Currency = null) {
+    public TokenResponse NewSale(string Token, string OrderRef, decimal Amount, string Currency = null) {
       var request = new TokenRequest()
         {
           Method = PayU.Token.TokenRequest.MethodType.TOKEN_NEWSALE,
           Merchant = Merchant,
           ReferenceNumber = Token,
+          ExternalReference = OrderRef,
           Amount = Amount,
           Currency = Currency ?? "TRY"
         };

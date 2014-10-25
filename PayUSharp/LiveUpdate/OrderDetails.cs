@@ -26,6 +26,12 @@ namespace PayU.LiveUpdate
             InstallmentOptions = "";
         }
 
+        [Parameter(Name = "LU_ENABLE_TOKEN", SortIndex = 15, ExcludeFromHash = true)]
+        public bool? TokenEnable { get; set; }
+
+        [Parameter(Name = "LU_TOKEN_TYPE", SortIndex = 16, ExcludeFromHash = true)]
+        public PayU.Base.TokenType? TokenType { get; set; }
+
         [Parameter(Name = "BACK_REF", ExcludeFromHash = true)]
         public string ReturnUrl { get; set; }
 

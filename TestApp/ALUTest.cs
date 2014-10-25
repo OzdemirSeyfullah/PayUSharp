@@ -20,7 +20,7 @@ namespace TestApp
             order.TokenType = PayU.Base.TokenType.PAY_ON_TIME;
 
             order.OrderRef = "EXT_" + new Random().Next(100000, 999999).ToString();
-            order.OrderDate = DateTime.Now;
+            order.OrderDate = DateTime.UtcNow;
             order.ProductDetails.Add(new ProductDetails
             {
                 Code = "SPTHAR031092",

@@ -21,6 +21,10 @@ namespace TestWeb
             
             parameters.Merchant = "OPU_TEST";
             parameters.OrderRef = "EXT_" + new Random().Next(100000, 999999).ToString();
+
+            parameters.TokenEnable = true;
+            parameters.TokenType = PayU.Base.TokenType.PAY_ON_TIME;
+
             parameters.OrderDate = DateTime.Now;
             parameters.ProductDetails.Add(new ProductDetails
                                        {

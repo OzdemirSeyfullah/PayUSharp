@@ -20,6 +20,9 @@ namespace TestWeb.LiveUpdate
             order.Merchant = "PAYUDEMO";
             order.OrderRef = "EXT_" + new Random().Next(100000, 999999).ToString();
             
+            order.TokenEnable = true;
+            order.TokenType = PayU.Base.TokenType.PAY_ON_TIME;
+
             order.ProductDetails.Add(new ProductDetails
                                           {
                 Code = "TCK1",

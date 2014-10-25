@@ -9,6 +9,12 @@ namespace PayU.AutomaticLiveUpdate
             ProductDetails = new List<ProductDetails>();
         }
 
+        [Parameter(Name = "LU_ENABLE_TOKEN", SortIndex = 15)]
+        public bool? TokenEnable { get; set; }
+
+        [Parameter(Name = "LU_TOKEN_TYPE", SortIndex = 16)]
+        public PayU.Base.TokenType? TokenType { get; set; }
+
         [Parameter(IsNested = true)]
         public IList<ProductDetails> ProductDetails { get; set; }
         
