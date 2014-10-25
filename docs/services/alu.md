@@ -8,7 +8,7 @@ Herhangi bir PayU işlemi gerçekleştirilmeden önce (tercihen 1 kere uygulama 
 
 Automatic LiveUpdate için zorunlu ayarlar `SignatureKey` ve `Environment` alanlarıdır. Örnek kullanım şu şekildedir:
 
-```csharp
+```cs
   PayU.Configuration.Instance
       .SetSignatureKey('signaturekey')
       .SetEnvironment("https://secure.payuodeme.com/order/");
@@ -16,9 +16,9 @@ Automatic LiveUpdate için zorunlu ayarlar `SignatureKey` ve `Environment` alanl
 
 ### Automatic LiveUpdate Siparişinin Oluşturulması
 
-Automatic LiveUpdate sipariş bilgileri PayUSharp kütüphanesinde `PayU.AtomaticLiveUpdate.OrderDetails` sınıfı ile temsil edilmektedir. Yeni bir `PayU.AtomaticLiveUpdate.OrderDetails` nesnesi yaratılarak ve bu nesnenin [alanları][ALUFields] sipariş bilgileri ile doldurularak bir PayUSharp Automatic LiveUpdate siparişi oluşturulur:
+Automatic LiveUpdate sipariş bilgileri PayUSharp kütüphanesinde `PayU.AtomaticLiveUpdate.OrderDetails` sınıfı ile temsil edilmektedir. Yeni bir `PayU.AtomaticLiveUpdate.OrderDetails` nesnesi yaratılarak ve bu nesnenin [alanları](#alufields) sipariş bilgileri ile doldurularak bir PayUSharp Automatic LiveUpdate siparişi oluşturulur:
 
-```csharp
+```cs
 var order = new PayU.AutomaticLiveUpdate.OrderDetails();
 
 order.Merchant = "PAYUDEMO";
@@ -96,7 +96,7 @@ Automatic LiveUpdate sürecinin tamamlanabilmesi için oluşturulmuş olan `PayU
 
 PayUSharp kütüphanesi bu POST işlemi için `PayU.AutomaticLiveUpdate.AluRequest` sınıfını kullanmaktadır. Sipariş bilgisi `PayU.AutomaticLiveUpdate.AluRequest` sınıfının `ProcessPayment` metoduna verilerek bu POST işleminin gerçekleşmesi sağlanır:
 
-```csharp
+```cs
   var response = PayU.AutomaticLiveUpdate.AluRequest.ProcessPayment(order);
 ```
 
@@ -104,7 +104,7 @@ PayUSharp kütüphanesi bu POST işlemi için `PayU.AutomaticLiveUpdate.AluReque
 
 ### Automatic LiveUpdate Sipariş Sonucunun İşlenmesi
 
-`AluRequest.ProcessPayment` metodunun çağırılması sonucunda dönen cevap `PayU.AutomaticLiveUpdate.AluResponse` tipinden olacaktır. Bu cevap nesnesi gerçekleşen veya hata veren ödeme sonucunu veren [alanlara][ALUFields] sahiptir.
+`AluRequest.ProcessPayment` metodunun çağırılması sonucunda dönen cevap `PayU.AutomaticLiveUpdate.AluResponse` tipinden olacaktır. Bu cevap nesnesi gerçekleşen veya hata veren ödeme sonucunu veren [alanlara](#alufields) sahiptir.
 
 Normal akış dışında `ProcessPayment` metodu çağırıldığında iki olaya dikkat etmek gerekmektedir:
 
@@ -115,7 +115,7 @@ Tipik bir Automatic LiveUpdate request/response şu şekilde olmalıdır:
 
 #### Ödeme Sayfası - http://example.com/AutomaticLiveUpdate/Default.aspx
 
-```csharp
+```cs
   public partial class Default : System.Web.UI.Page
   {
     public void Page_Load() {
@@ -128,7 +128,7 @@ Tipik bir Automatic LiveUpdate request/response şu şekilde olmalıdır:
       // 3D Secure zorunlu ise 3D Secure işlemi sonrası sonucun dönmesini istediğimiz adres
       order.ReturnUrl = "http://example.com/AutomaticLiveUpdate/ThreeDS.aspx";
 
-      try 
+      try
       {
         var response = AluRequest.ProcessPayment(parameters);
 
@@ -147,7 +147,7 @@ Tipik bir Automatic LiveUpdate request/response şu şekilde olmalıdır:
           // Başarılı bir işlem durumu
         }
       }
-      catch (PayuException ex) 
+      catch (PayuException ex)
       {
         // Hata işlemleri yapılır
       }
@@ -157,7 +157,7 @@ Tipik bir Automatic LiveUpdate request/response şu şekilde olmalıdır:
 
 #### 3D Secure Sayfası - http://example.com/AutomaticLiveUpdate/ThreeDS.aspx
 
-```csharp
+```cs
   public partial class ThreeDS : System.Web.UI.Page
   {
     public void Page_Load() {
@@ -177,6 +177,6 @@ Tipik bir Automatic LiveUpdate request/response şu şekilde olmalıdır:
   }
 ```
 
-### Automatic LiveUpdate Alanları [ALUFields]
+### Automatic LiveUpdate Alanları {#alufields}
 
 <<[fields/alu_fields.md]

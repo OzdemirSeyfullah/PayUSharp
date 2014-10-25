@@ -8,7 +8,7 @@ Herhangi bir PayU işlemi gerçekleştirilmeden önce (tercihen 1 kere uygulama 
 
 LiveUpdate için zorunlu ayarlar `SignatureKey` ve `Environment` alanlarıdır. Örnek kullanım şu şekildedir:
 
-```csharp
+```cs
   PayU.Configuration.Instance
       .SetSignatureKey('signaturekey')
       .SetEnvironment("https://secure.payuodeme.com/order/");
@@ -16,9 +16,9 @@ LiveUpdate için zorunlu ayarlar `SignatureKey` ve `Environment` alanlarıdır. 
 
 ### LiveUpdate Siparişinin Oluşturulması
 
-LiveUpdate sipariş bilgileri PayUSharp kütüphanesinde `PayU.LiveUpdate.OrderDetails` sınıfı ile temsil edilmektedir. Yeni bir `PayU.LiveUpdate.OrderDetails` nesnesi yaratılarak ve bu nesnenin [alanları][LUFields] sipariş bilgileri ile doldurularak bir PayUSharp LiveUpdate siparişi oluşturulur:
+LiveUpdate sipariş bilgileri PayUSharp kütüphanesinde `PayU.LiveUpdate.OrderDetails` sınıfı ile temsil edilmektedir. Yeni bir `PayU.LiveUpdate.OrderDetails` nesnesi yaratılarak ve bu nesnenin [alanları](#lufields) sipariş bilgileri ile doldurularak bir PayUSharp LiveUpdate siparişi oluşturulur:
 
-```csharp
+```cs
   var order = new PayU.LiveUpdate.OrderDetails();
 
   order.Merchant = "PAYUDEMO";
@@ -70,7 +70,7 @@ LiveUpdate sürecinin tamamlanabilmesi için oluşturulmuş olan `PayU.LiveUpdat
 
 PayUSharp kütüphanesi HTML form işlemleri için `PayU.LiveUpdate.LiveUpdateRequest` sınıfını kullanmaktadır. Sipariş bilgisi ile yaratılan yeni bir `PayU.LiveUpdate.LiveUpdateRequest` nesnesinin `RenderPaymentForm` metodu çağırılarak bu HTML formu string olarak oluşturulabilir:
 
-```csharp
+```cs
   var request = new LiveUpdateRequest(order);
 
   // sadece Submit düğmesi adı verilerek
@@ -82,7 +82,7 @@ PayUSharp kütüphanesi HTML form işlemleri için `PayU.LiveUpdate.LiveUpdateRe
 
 Oluşturulan bu HTML formu kullanılan web framework'üne uygun bir şekilde müşteriye gösterilecek sipariş sayfasına eklenmelidir. Bu işlem framework'ler arasında farklı şekillerde olmaktadır. ASP.NET Web Forms ile sayfada bir `Literal` alan belirlenip, form datası bu alana yazdırılabilir:
 
-```csharp
+```cs
   var request = new LiveUpdateRequest(order);
 
   ltrLiveUpdateForm.Text = request.RenderPaymentForm("PayU ile Ödeme Yap", "PayULiveUpdateForm");
@@ -90,7 +90,7 @@ Oluşturulan bu HTML formu kullanılan web framework'üne uygun bir şekilde mü
 
 Son olarak, sipariş bilgilerini içeren bu HTML form'unun POST metodu ile submit edilmesi gerekmektedir. Eğer dükkanınızın akışı bu işlemi kullanıcının yapması üzerine kurulu ise yukarıda yapılanlar sizin için yeterli olacaktır. Fakat akışınız bu noktada kullanıcıyı otomatik olarak Ortak Ödeme Sayfasına yönlendirmek üzerine kurulu ise, o zaman sayfanızda aşağıdaki gibi bir JavaScript kod parçacığı eklenmelidir:
 
-```html
+```
 <script>
   // DIKKAT: Oluşturulmuş olan PayU form'unun Form ID'si kullanılmalı...
   document.getElementById('PayuLiveUpdateForm').submit();
@@ -103,11 +103,11 @@ Eğer LiveUpdate ile ilk gönderilen sipariş bilgilerinde `ReturnUrl` alanı do
 
 Bu sayfaya PayU dışında başka kaynaklardan istek gelmemesi için PayU tarafından gönderilen parametrelerin arasında bir de doğrulama kodu bulunmaktadır. Güvenlik nedeniyle bu kod doğrulanmadan ödeme bilgilerine güvenmemeniz çok önemlidir. Doğrulama kodu `PayU.LiveUpdate.LiveUpdateRequest` sınıfının `VerifyControlSignature` metodu çağırılarak kontrol edilebilir:
 
-```csharp
+```cs
   // Verify the signature in the "ctrl" query string parameter
   var verified = LiveUpdateRequest.VerifyControlSignature(Request);
 ```
 
-### LiveUpdate Sipariş Alanları [LUFields]
+### LiveUpdate Sipariş Alanları {#lufields}
 
 <<[fields/lu_fields.md]

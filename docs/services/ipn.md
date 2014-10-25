@@ -1,8 +1,8 @@
 PayU Teknik Entegrasyon Rehberi'nde IPN sisteminin çalışması:
 
-> Bir sipariş için provizyon ve onay verildiğinde, PayU sunucusu siparişle ilgili tüm bilgileri içeren bir veri yapısını 
-> sisteminizde daha önceden ayarlanmış olan bir URL’ye gönderir. Veriler HTTP POST aracılığıyla gönderilir. Veriler ayıca 
-> bilgilerin doğrulanması için bir imza içerecektir. İmza, istenen veri seti üzerinde bir ortak PayU/Satıcı anahtarı ile bir 
+> Bir sipariş için provizyon ve onay verildiğinde, PayU sunucusu siparişle ilgili tüm bilgileri içeren bir veri yapısını
+> sisteminizde daha önceden ayarlanmış olan bir URL’ye gönderir. Veriler HTTP POST aracılığıyla gönderilir. Veriler ayıca
+> bilgilerin doğrulanması için bir imza içerecektir. İmza, istenen veri seti üzerinde bir ortak PayU/Satıcı anahtarı ile bir
 > HMAC_MD5 işlevi uygulayarak elde edilir (HMAC, RFC 2104’te tanımlanmaktadır).
 
 olarak anlatılmıştır.
@@ -15,7 +15,7 @@ Herhangi bir PayU işlemi gerçekleştirilmeden önce (tercihen 1 kere uygulama 
 
 IPN için zorunlu alan `SignatureKey` alanıdır. Örnek kullanım şu şekildedir:
 
-```csharp
+```{.cs language=csh}
   PayU.Configuration.Instance.SetSignatureKey('signaturekey');
 ```
 
@@ -23,7 +23,7 @@ IPN için zorunlu alan `SignatureKey` alanıdır. Örnek kullanım şu şekilded
 
 Sipariş bilgilerinde verdiğiniz IPN adresinizin `http://example.com/ipn/default.aspx` olduğunu farzedelim. Sipariş onayı verildiğinde bu adrese IPN bilgileri HTTP POST olarak gönderilecektir. Sayfa kodunuzda, gönderilen bu bilgileri yorumlamak için aşağıdaki örnekte olduğu gibi `IPNRequest.FromHttpRequest` metodu kullanılarak yeni bir `IPNRequest` nesnesi yaratılmalıdır. Bu metod ile `IPNRequest` nesnesi yaratılırken gelen POST alanları doğru bir şekilde işlenerek nesnenin ilgili alanlarına kolay erişim icin eklenecektir.
 
-```csharp
+```{.cs language=csh}
 public partial class Default: System.Web.UI.Page {
   public void Page_Load() {
     // Some code here
@@ -44,7 +44,7 @@ Eğer IPN isteği başarılı bir şekilde işlendiyse HTTP 200 kodu ile PayU d�
 
 Bu cevap alanındaki Hash'i hesaplamak ve doğru XML'i oluşturmak için de `IPNRequest` nesnesinin `GenerateResponse` metodu kullanılmalıdır. Bunun için örnek kod şu şekildedir:
 
-```csharp
+```{.cs language=csh}
 public partial class Default : System.Web.UI.Page
 {
   public void Page_Load() {

@@ -1,0 +1,1 @@
+pandoc -f markdown PayUSharp\ Kullanim\ Dokumani.md --filter pandoc-include-filter.py -t markdown | pandoc -f markdown --latex-engine=xelatex -t latex --listings  --smart -o PayUSharp\ Kullanim\ Dokumani.pdf -H header.tex -V geometry=margin=1in -V fontsize=12pt -V classoption=oneside
