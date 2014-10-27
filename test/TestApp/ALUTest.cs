@@ -58,7 +58,7 @@ namespace TestApp
             order.ClientTime = DateTime.UtcNow;
             order.SelectedInstallmentNumber = 1;
 
-            var service = new AluService("4@ET=1()T=%y3S8b(r_]", "https://secure.payuodeme.com/order/alu.php");
+            var service = new AluService("4@ET=1()T=%y3S8b(r_]", "https://secure.payu.com.tr/order/alu/v2");
             var response = service.ProcessPayment(order);
 
             Console.WriteLine("Successful: {0}", response.IsSuccess);

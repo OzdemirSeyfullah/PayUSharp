@@ -68,6 +68,59 @@ namespace PayU.AutomaticLiveUpdate
         [XmlElement("HASH")]
         public string Hash { get; set; }
 
+        /* ALU v2 fields */
+
+        [XmlElement("AUTH_CODE")]
+        public string AuthCode { get; set; }
+
+        [XmlElement("RRN")]
+        public string RRN { get; set; }
+
+        [XmlElement("RESPONSE")]
+        public string BankResponse { get; set; }
+
+        [XmlElement("PROCRETURNCODE")]
+        public string BankReturnCode { get; set; }
+
+        [XmlElement("TRANSID")]
+        public string TransactionId { get; set; }
+
+        [XmlElement("ERRORMESSAGE")]
+        public string BankErrorMessage { get; set; }
+
+        [XmlElement("CLIENTID")]
+        public string BankClientId { get; set; }
+
+        [XmlElement("OID")]
+        public string BankOrderId { get; set; }
+
+        [XmlElement("MDSTATUS")]
+        public string BankMDStatus { get; set; }
+
+        [XmlElement("MDERRORMSG")]
+        public string BankMDErrorMessage { get; set; }
+
+        [XmlElement("TXSTATUS")]
+        public string BankTransactionStatus { get; set; }
+
+        [XmlElement("ECI")]
+        public string ECI { get; set; }
+
+        [XmlElement("XID")]
+        public string XID { get; set; }
+
+        [XmlElement("CAVV")]
+        public string CAVV { get; set; }
+
+        [XmlElement("PAN")]
+        public string PAN { get; set; }
+
+        [XmlElement("EXPYEAR")]
+        public string ExpiryYear { get; set; }
+
+        [XmlElement("EXPMONTH")]
+        public string ExpiryMonth { get; set; }
+
         public bool IsSuccess
         {
             get { return Status == Status.Success; }
