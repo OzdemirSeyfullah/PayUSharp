@@ -61,14 +61,14 @@ order.CardDetails = new PayU.AutomaticLiveUpdate.CardDetails
 order.BillingDetails = new PayU.AutomaticLiveUpdate.BillingDetails
 {
     FirstName = "Ahmet",
-    LastName = "Yılmaz",
-    Email = "ahmet.yılmaz@payu.com.tr",
+    LastName = "Yilmaz",
+    Email = "ahmet.yilmaz@payu.com.tr",
     PhoneNumber = "2122223344",
     CountryCode = "TR",
     Address = "Billing address", //optional
     Address2 = "Billing address ", //optional
     ZipCode = "12345", //optional
-    City = "Kağıthane", //optional - Ilce/Semt
+    City = "Kagithane", //optional - Ilce/Semt
     State = "Istanbul", //optional - Sehir
     Fax = "1234567890" //optional
 };
@@ -122,10 +122,10 @@ Tipik bir Automatic LiveUpdate request/response şu şekilde olmalıdır:
       var order = new PayU.AutomaticLiveUpdate.OrderDetails();
 
       // ...
-      // order alanları atanır
+      // order alanlari atanir
       // ...
 
-      // 3D Secure zorunlu ise 3D Secure işlemi sonrası sonucun dönmesini istediğimiz adres
+      // 3D Secure zorunlu ise 3D Secure islemi sonrasi sonucun donmesini istedigimiz adres
       order.ReturnUrl = "http://example.com/AutomaticLiveUpdate/ThreeDS.aspx";
 
       try
@@ -133,23 +133,23 @@ Tipik bir Automatic LiveUpdate request/response şu şekilde olmalıdır:
         var response = AluRequest.ProcessPayment(parameters);
 
         if (response.Is3DSResponse) {
-          // 3D Secure zorunlu. Kullanıcıyı verilen adrese yönlendirmeliyiz.
+          // 3D Secure zorunlu. Kullaniciyi verilen adrese yonlendirmeliyiz.
           Response.Redirect(response.Url3DS);
           Response.End();
         }
 
-        // Buraya kadar geldiysek ALU'dan cevap gelmiş demektir.
-        // response nesnesinin alanlarına bakarak sonucu anlayabiliriz.
+        // Buraya kadar geldiysek ALU'dan cevap gelmis demektir.
+        // response nesnesinin alanlarina bakarak sonucu anlayabiliriz.
         var status = response.Status
 
         if (status == Status.Success)
         {
-          // Başarılı bir işlem durumu
+          // Basarili bir islem durumu
         }
       }
       catch (PayuException ex)
       {
-        // Hata işlemleri yapılır
+        // Hata islemleri yapilir
       }
     }
   }
@@ -161,17 +161,17 @@ Tipik bir Automatic LiveUpdate request/response şu şekilde olmalıdır:
   public partial class ThreeDS : System.Web.UI.Page
   {
     public void Page_Load() {
-      // 3D Secure sonucu cevap gelmiş. Cevap alanları POST edilmiş olarak geleceği
-      // için bu alanları kullanarak yeni bir AluResponse yaratmalıyız.
+      // 3D Secure sonucu cevap gelmis. Cevap alanlari POST edilmis olarak gelecegi
+      // icin bu alanlari kullanarak yeni bir AluResponse yaratmaliyiz.
       var response = AluResponse.FromHttpRequest (Request);
 
-      // Buraya kadar geldiysek ALU'dan cevap gelmiş demektir.
-      // response nesnesinin alanlarına bakarak sonucu anlayabiliriz.
+      // Buraya kadar geldiysek ALU'dan cevap gelmis demektir.
+      // response nesnesinin alanlarina bakarak sonucu anlayabiliriz.
       var status = response.Status
 
       if (status == Status.Success)
       {
-        // Başarılı bir işlem durumu
+        // Basarili bir islem durumu
       }
     }
   }

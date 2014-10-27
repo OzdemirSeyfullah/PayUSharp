@@ -57,8 +57,8 @@ LiveUpdate sipariş bilgileri PayUSharp kütüphanesinde `PayU.LiveUpdate.OrderD
   order.BillingDetails = new PayU.LiveUpdate.BillingDetails {
       FirstName = "Ahmet",
       LastName = "Yılmaz",
-      Email = "ahmet.yılmaz@payu.com.tr",
-      City = "Kağıthane", // Ilce/Semt
+      Email = "ahmet.yilmaz@payu.com.tr",
+      City = "Kagithane", // Ilce/Semt
       State = "Istanbul", // Sehir
       CountryCode = "TR"
   };
@@ -73,10 +73,10 @@ PayUSharp kütüphanesi HTML form işlemleri için `PayU.LiveUpdate.LiveUpdateRe
 ```cs
   var request = new LiveUpdateRequest(order);
 
-  // sadece Submit düğmesi adı verilerek
+  // sadece Submit dugmesi adi verilerek
   string htmlForm = request.RenderPaymentForm("PayU ile Ödeme Yap");
 
-  // veya hem Submit düğmesi adı hem de Form Id'si belirterek
+  // veya hem Submit dugmesi adi hem de Form Id'si belirterek
   string htmlFormWithId = request.RenderPaymentForm("PayU ile Ödeme Yap", "PayULiveUpdateForm");
 ```
 
@@ -92,7 +92,7 @@ Son olarak, sipariş bilgilerini içeren bu HTML form'unun POST metodu ile submi
 
 ```
 <script>
-  // DIKKAT: Oluşturulmuş olan PayU form'unun Form ID'si kullanılmalı...
+  // DIKKAT: Olusturulmus olan PayU form'unun Form ID'si kullanilmali...
   document.getElementById('PayuLiveUpdateForm').submit();
 </script>
 ```
