@@ -14,7 +14,7 @@ namespace Doc
   class MainClass
   {
     private static CodeDomProvider provider = CodeDomProvider.CreateProvider("CSharp");
-    private static string OutputBasePath = "../../../docs/";
+    private static string OutputBasePath = "../../../../docs/";
 
     public static void Main(string[] args)
     {

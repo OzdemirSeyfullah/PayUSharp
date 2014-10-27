@@ -11,10 +11,10 @@ namespace TestApp
     public static void Run()
     {
       Configuration.Instance
-        .SetSignatureKey("SECRET_KEY")
+        .SetSignatureKey("4@ET=1()T=%y3S8b(r_]")
         .SetEnvironment("https://secure.payuodeme.com/order/");
 
-      var service = new TokenService("OPU_TEST");
+      var service = new TokenService("TOKENTES");
 
       var token = "3257913";
       var orderRef = "EXT_" + new Random().Next(100000, 999999).ToString();

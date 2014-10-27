@@ -13,13 +13,13 @@ namespace TestWeb
         public virtual void button1Clicked (object sender, EventArgs args)
         {
             Configuration.Instance
-                .SetSignatureKey("SECRET_KEY")
+                .SetSignatureKey("4@ET=1()T=%y3S8b(r_]")
                 .SetEnvironment("https://secure.payuodeme.com/order/")
                 .SetIgnoreSSLCertificate(true); // Don't do this on production.
             
             var parameters = new OrderDetails();
             
-            parameters.Merchant = "OPU_TEST";
+            parameters.Merchant = "TOKENTES";
             parameters.OrderRef = "EXT_" + new Random().Next(100000, 999999).ToString();
 
             parameters.TokenEnable = true;

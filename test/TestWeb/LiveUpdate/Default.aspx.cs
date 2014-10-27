@@ -13,11 +13,11 @@ namespace TestWeb.LiveUpdate
             form1.Visible = false;
 
             Configuration.Instance
-                .SetSignatureKey("P5@F8*3!m0+?^9s3&u8(")
+                .SetSignatureKey("4@ET=1()T=%y3S8b(r_]")
                 .SetEnvironment("https://secure.payuodeme.com/order/");
 
             var order = new OrderDetails();
-            order.Merchant = "PAYUDEMO";
+            order.Merchant = "TOKENTES";
             order.OrderRef = "EXT_" + new Random().Next(100000, 999999).ToString();
             
             order.TokenEnable = true;

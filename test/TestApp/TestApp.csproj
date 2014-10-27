@@ -55,7 +55,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PayUSharp\PayUSharp.csproj">
+    <ProjectReference Include="..\..\src\PayUSharp\PayUSharp.csproj">
       <Project>{3BAAC9D2-F1E0-4027-82A4-99FDD0F5FDDB}</Project>
       <Name>PayUSharp</Name>
     </ProjectReference>

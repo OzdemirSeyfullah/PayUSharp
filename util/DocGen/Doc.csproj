@@ -34,9 +34,6 @@
     <Reference Include="Fasterflect">
       <HintPath>packages\fasterflect.2.1.3\lib\net40\Fasterflect.dll</HintPath>
     </Reference>
-    <Reference Include="PayUSharp">
-      <HintPath>..\TestApp\bin\Debug\PayUSharp.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -45,5 +42,11 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\PayUSharp\PayUSharp.csproj">
+      <Project>{3BAAC9D2-F1E0-4027-82A4-99FDD0F5FDDB}</Project>
+      <Name>PayUSharp</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

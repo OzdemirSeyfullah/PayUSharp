@@ -10,7 +10,7 @@ namespace TestWeb
     {
         public void Page_Load() {
             Configuration.Instance
-                .SetSignatureKey("P5@F8*3!m0+?^9s3&u8(");
+              .SetSignatureKey("4@ET=1()T=%y3S8b(r_]");
 
             // Verify the signature in the "ctrl" query string parameter
             var verification = LiveUpdateRequest.VerifyControlSignature(Request);

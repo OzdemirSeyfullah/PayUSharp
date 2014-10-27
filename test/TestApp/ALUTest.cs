@@ -9,12 +9,12 @@ namespace TestApp
         public static void Run()
         {
             Configuration.Instance
-                .SetSignatureKey("SECRET_KEY")
+                .SetSignatureKey("4@ET=1()T=%y3S8b(r_]")
                 .SetEnvironment("https://secure.payuodeme.com/order/");
 
             var order = new OrderDetails();
 
-            order.Merchant = "OPU_TEST";
+            order.Merchant = "TOKENTES";
 
             order.TokenEnable = true;
             order.TokenType = PayU.Base.TokenType.PAY_ON_TIME;
