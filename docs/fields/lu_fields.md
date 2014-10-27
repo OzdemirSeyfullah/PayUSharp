@@ -1,13 +1,13 @@
 | OrderDetails Alanı | Alan Tipi | PayU LiveUpdate Alanı |
 | ----             | ---       | ---                 |
 | `Merchant` | `string` | `MERCHANT` |
-| `TokenEnable` | `bool?` | `LU_ENABLE_TOKEN` |
-| `TokenType` | `TokenType?` | `LU_TOKEN_TYPE` |
 | `OrderRef` | `string` | `ORDER_REF` |
 | `OrderDate` | `DateTime` | `ORDER_DATE` |
 | `PaymentMethod` | `string` | `PAY_METHOD` |
 | `OrderHash` | `string` | `ORDER_HASH` |
 | `PricesCurrency` | `string` | `PRICES_CURRENCY` |
+| `TokenEnable` | `bool?` | `LU_ENABLE_TOKEN` |
+| `TokenType` | `TokenType?` | `LU_TOKEN_TYPE` |
 | `ReturnUrl` | `string` | `BACK_REF` |
 | `ShippingCosts` | `decimal` | `ORDER_SHIPPING` |
 | `ProductDetails[idx].Name` | `string` | `ORDER_PNAME[idx]` |

@@ -1,13 +1,13 @@
 | OrderDetails Alanı | Alan Tipi | PayU ALU İstek Alanı |
 | ----             | ---       | ---                 |
 | `Merchant` | `string` | `MERCHANT` |
-| `TokenEnable` | `bool?` | `LU_ENABLE_TOKEN` |
-| `TokenType` | `TokenType?` | `LU_TOKEN_TYPE` |
 | `OrderRef` | `string` | `ORDER_REF` |
 | `OrderDate` | `DateTime` | `ORDER_DATE` |
 | `PaymentMethod` | `string` | `PAY_METHOD` |
 | `OrderHash` | `string` | `ORDER_HASH` |
 | `PricesCurrency` | `string` | `PRICES_CURRENCY` |
+| `TokenEnable` | `bool?` | `LU_ENABLE_TOKEN` |
+| `TokenType` | `TokenType?` | `LU_TOKEN_TYPE` |
 | `ProductDetails[idx].Name` | `string` | `ORDER_PNAME[idx]` |
 | `ProductDetails[idx].Code` | `string` | `ORDER_PCODE[idx]` |
 | `ProductDetails[idx].UnitPrice` | `decimal` | `ORDER_PRICE[idx]` |
