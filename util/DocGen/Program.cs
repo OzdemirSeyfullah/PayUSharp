@@ -15,19 +15,32 @@ namespace Doc
   class MainClass
   {
     private static CodeDomProvider provider = CodeDomProvider.CreateProvider("CSharp");
-    private static string OutputBasePath = "../../../../docs/";
+    private static string OutputBasePath = "docs/";
 
-    public static void Main(string[] args)
+    public static int Main(string[] args)
     {
-      Console.WriteLine("Hello World!");
+      if (args.Length < 1)
+      {
+        Console.Error.WriteLine("Supply the path to the docs folder");
+        return 1;
+      }
+
+      OutputBasePath = args[0];
+
+      Console.WriteLine("Generating fields...");
 
       ProcessIPN();
+      Console.WriteLine("  Generated fields for IPN");
       ProcessLU();
+      Console.WriteLine("  Generated fields for LU");
       ProcessALU();
+      Console.WriteLine("  Generated fields for ALU");
 
       OutputMetadata();
 
-      Console.WriteLine("Bye!");
+      Console.WriteLine("  All done.");
+
+      return 0;
     }
 
     static void OutputMetadata()

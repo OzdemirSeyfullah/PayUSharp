@@ -26,7 +26,7 @@
 | `PaymentMethodCode` | `string` | `PAYMETHOD_CODE` |
 | `TotalPaidAmount` | `decimal` | `IPN_PAID_AMOUNT` |
 | `InstallmentProgramName` | `string` | `IPN_INSTALLMENTS_PROGRAM` |
-| `InstallmentNumber` | `int` | `IPN_INSTALLMENTS_NUMBER` |
+| `InstallmentNumber` | `string` | `IPN_INSTALLMENTS_NUMBER` |
 | `InstallmentProfit` | `string` | `IPN_INSTALLMENTS_PROFIT` |
 | `FirstName` | `string` | `FIRSTNAME` |
 | `LastName` | `string` | `LASTNAME` |
