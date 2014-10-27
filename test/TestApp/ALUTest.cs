@@ -9,10 +9,6 @@ namespace TestApp
     {
         public static void Run()
         {
-            Configuration.Instance
-                .SetSignatureKey("4@ET=1()T=%y3S8b(r_]")
-                .SetEnvironment("https://secure.payuodeme.com/order/");
-
             var order = new OrderDetails();
 
             order.Merchant = "TOKENTES";
@@ -62,7 +58,8 @@ namespace TestApp
             order.ClientTime = DateTime.UtcNow;
             order.SelectedInstallmentNumber = 1;
 
-            var response = AluRequest.ProcessPayment(order);
+            var service = new AluService("4@ET=1()T=%y3S8b(r_]", "https://secure.payuodeme.com/order/alu.php");
+            var response = service.ProcessPayment(order);
 
             Console.WriteLine("Successful: {0}", response.IsSuccess);
             Console.WriteLine("Response: {0}-{1}-{2}-{3}", response.RefNo, response.Status, response.ReturnCode, response.ReturnMessage);

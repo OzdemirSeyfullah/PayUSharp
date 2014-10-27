@@ -10,11 +10,9 @@ namespace TestWeb
     public partial class OrderComplete : System.Web.UI.Page
     {
         public void Page_Load() {
-            Configuration.Instance
-              .SetSignatureKey("4@ET=1()T=%y3S8b(r_]");
-
             // Verify the signature in the "ctrl" query string parameter
-            var verification = LiveUpdateRequest.VerifyControlSignature(Request);
+            var service = new LiveUpdateService("4@ET=1()T=%y3S8b(r_]");
+            var verification = service.VerifyControlSignature(Request);
             // Grab the order id.
             var orderId = Request.QueryString["orderid"];
 

@@ -14,7 +14,7 @@ namespace PayU.IPN
     [XmlRoot(ROOT_ELEMENT_NAME)]
     public class IPNRequest 
     {
-        private const string ROOT_ELEMENT_NAME = "EPAYMENT";
+        internal const string ROOT_ELEMENT_NAME = "EPAYMENT";
         private const string PRODUCTS_ELEMENT_NAME = "PRODUCTS";
         private const string PRODUCT_ELEMENT_NAME = "PRODUCT";
 
@@ -197,119 +197,75 @@ namespace PayU.IPN
         [XmlElement("IPN_CC_EXP_DATE")]
         public string CreditCardExpiryDate { get; set; }
 
-        /* Public Methods */
-
-        public static IPNRequest FromString(string response)
-        {
-            using (var stringReader = new StringReader(response))
-                return new XmlSerializer(typeof(IPNRequest)).Deserialize(stringReader) as IPNRequest;
-        }
-
-        public static IPNRequest FromHttpRequest(System.Web.HttpRequest request)
-        {
-            return FromNameValueCollection(request.Form);
-        }
-
-        public static IPNRequest FromNameValueCollection(NameValueCollection parameters)
-        {
-            var xmlStr = ConvertRequestFormToXml (parameters);
-            return FromString (xmlStr);
-        }
-
-        /* Private Methods */
-
-        private static string ConvertRequestFormToXml(NameValueCollection parameters) {
-            StringBuilder xml = new StringBuilder ();
-            var regex = new Regex(@"^([^\[]+)\[(\d*)\]$");
-            var formData = parameters
-                    .AllKeys
-                    .Select(k => new { Key = k, Match = regex.Match(k)})
-                    .SelectMany(item => parameters.GetValues(item.Key)
-                        .Select((value, index) => {
-                                string idx = null;
-                                if (item.Match.Success) {
-                                    idx = item.Match.Groups[2].Value;
-                                    if (string.IsNullOrEmpty(idx)) {
-                                        idx = string.Format("FakeIndex-{0}", index);
-                                    }
-                                }
-                                return new { 
-                                    IsArray = item.Match.Success, // Does it match the array pattern
-                                    Key = item.Match.Success ? item.Match.Groups[1].Value : item.Key, // Sanitize the key 
-                                    Value = value, // Extract the value
-                                    Index = idx // Grab the array index if it is an array
-                                };
-                        })
-                );
-
-            var singleItems = formData.Where (item => !item.IsArray);
-            var arrayItems  = formData.Where (item => item.IsArray);
-
-
-            var arrayPairGroups = arrayItems
-                .GroupBy(item => item.Index);
-                
-            using (var writer = XmlWriter.Create(xml)) {
-                writer.WriteStartElement(ROOT_ELEMENT_NAME);
-                // First write out all the non-array key/values
-                foreach (var item in singleItems) {
-                    if (string.IsNullOrEmpty(item.Key))
-                        continue;
-                    writer.WriteStartElement(item.Key);
-                    writer.WriteString(item.Value);
-                    writer.WriteEndElement();
+        internal static string ConvertRequestFormToXml(NameValueCollection parameters) {
+          StringBuilder xml = new StringBuilder ();
+          var regex = new Regex(@"^([^\[]+)\[(\d*)\]$");
+          var formData = parameters
+            .AllKeys
+            .Select(k => new { Key = k, Match = regex.Match(k)})
+            .SelectMany(item => parameters.GetValues(item.Key)
+              .Select((value, index) => {
+                string idx = null;
+                if (item.Match.Success) {
+                  idx = item.Match.Groups[2].Value;
+                  if (string.IsNullOrEmpty(idx)) {
+                    idx = string.Format("FakeIndex-{0}", index);
+                  }
                 }
+                return new { 
+                  IsArray = item.Match.Success, // Does it match the array pattern
+                  Key = item.Match.Success ? item.Match.Groups[1].Value : item.Key, // Sanitize the key 
+                  Value = value, // Extract the value
+                  Index = idx // Grab the array index if it is an array
+                };
+              })
+            );
 
-                // Then write out array values (ie Products)
-                // First the Products array tag
-                writer.WriteStartElement(PRODUCTS_ELEMENT_NAME);
-                // Look over each index group
-                foreach (var grp in arrayPairGroups) {
-                    // Write out a Product tag
-                    writer.WriteStartElement(PRODUCT_ELEMENT_NAME);
+          var singleItems = formData.Where (item => !item.IsArray);
+          var arrayItems  = formData.Where (item => item.IsArray);
 
-                    // Write out all the items as tags
-                    foreach (var item in grp)
-                    {
-                        if (string.IsNullOrEmpty(item.Key))
-                            continue;
-                        writer.WriteStartElement(item.Key);
-                        writer.WriteString(item.Value);
-                        writer.WriteEndElement();
-                    }
-                    // Close the Product tag
-                    writer.WriteEndElement();
-                }
 
-                // Close the Products tag
-                writer.WriteEndElement();
-                
-                writer.WriteEndElement();
-            }
-            return xml.ToString ();
-        }
+          var arrayPairGroups = arrayItems
+            .GroupBy(item => item.Index);
 
-        private static void AppendToHashString(StringBuilder sb, object data) {
-            var str = data.ToString();
-            sb.Append(Encoding.UTF8.GetByteCount(str));
-            sb.Append(str);
-        }
-
-        public string GenerateResponse() {
-            var hash = string.Empty; 
-            var now = DateTime.Now.ToString("yyyyMMddHHmmss");
-            var hashStr = new StringBuilder();
-
-            if (Products.Length > 0) {
-                AppendToHashString(hashStr, Products[0].Id);
-                AppendToHashString(hashStr, Products[0].Name);
-                AppendToHashString(hashStr, this.Date);
-                AppendToHashString(hashStr, now);
-
-                hash = hashStr.ToString().HashWithSignature(Configuration.Instance.SignatureKey);
+          using (var writer = XmlWriter.Create(xml)) {
+            writer.WriteStartElement(IPNRequest.ROOT_ELEMENT_NAME);
+            // First write out all the non-array key/values
+            foreach (var item in singleItems) {
+              if (string.IsNullOrEmpty(item.Key))
+                continue;
+              writer.WriteStartElement(item.Key);
+              writer.WriteString(item.Value);
+              writer.WriteEndElement();
             }
 
-            return string.Format("<{0}>{1}|{2}</{0}>", ROOT_ELEMENT_NAME, now, hash);
+            // Then write out array values (ie Products)
+            // First the Products array tag
+            writer.WriteStartElement(IPNRequest.PRODUCTS_ELEMENT_NAME);
+            // Look over each index group
+            foreach (var grp in arrayPairGroups) {
+              // Write out a Product tag
+              writer.WriteStartElement(IPNRequest.PRODUCT_ELEMENT_NAME);
+
+              // Write out all the items as tags
+              foreach (var item in grp)
+              {
+                if (string.IsNullOrEmpty(item.Key))
+                  continue;
+                writer.WriteStartElement(item.Key);
+                writer.WriteString(item.Value);
+                writer.WriteEndElement();
+              }
+              // Close the Product tag
+              writer.WriteEndElement();
+            }
+
+            // Close the Products tag
+            writer.WriteEndElement();
+
+            writer.WriteEndElement();
+          }
+          return xml.ToString ();
         }
     }
 }

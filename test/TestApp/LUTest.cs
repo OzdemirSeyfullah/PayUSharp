@@ -9,10 +9,6 @@ namespace TestApp
     {
         public static void Run()
         {
-            Configuration.Instance
-                .SetSignatureKey("P5@F8*3!m0+?^9s3&u8(")
-                .SetEnvironment("https://secure.payuodeme.com/order/");
-
             var order = new OrderDetails();
             order.Merchant = "PAYUDEMO";
             order.OrderRef = "6112457";
@@ -49,9 +45,9 @@ namespace TestApp
                 CountryCode = "TR"
             };
 
-            var request = new LiveUpdateRequest(order);
+            var service = new LiveUpdateService("P5@F8*3!m0+?^9s3&u8(");
 
-            Console.WriteLine("{0}", request.RenderPaymentForm("Go to Payment Page"));
+            Console.WriteLine("{0}", service.RenderPaymentForm(order, "Go to Payment Page"));
         }
     }
 }

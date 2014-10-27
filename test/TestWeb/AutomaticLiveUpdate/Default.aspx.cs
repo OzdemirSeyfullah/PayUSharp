@@ -12,12 +12,7 @@ namespace TestWeb
     public partial class Default : System.Web.UI.Page
     {
         public virtual void button1Clicked (object sender, EventArgs args)
-        {
-            Configuration.Instance
-                .SetSignatureKey("4@ET=1()T=%y3S8b(r_]")
-                .SetEnvironment("https://secure.payuodeme.com/order/")
-                .SetIgnoreSSLCertificate(true); // Don't do this on production.
-            
+        {            
             var parameters = new OrderDetails();
             
             parameters.Merchant = "TOKENTES";
@@ -88,7 +83,8 @@ namespace TestWeb
             var sb = new StringBuilder();
 
             try {
-                var response = AluRequest.ProcessPayment(parameters);
+                var service = new AluService("4@ET=1()T=%y3S8b(r_]", null, true);
+                var response = service.ProcessPayment(parameters);
 
                 if (response.Is3DSResponse) {
                     Response.Redirect (response.Url3DS);

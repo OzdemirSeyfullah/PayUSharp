@@ -34,6 +34,7 @@
     <Compile Include="IPNProduct.cs" />
     <Compile Include="IPNRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IPNService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

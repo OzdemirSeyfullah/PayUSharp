@@ -32,10 +32,10 @@
   <ItemGroup>
     <Compile Include="BillingDetails.cs" />
     <Compile Include="DeliveryDetails.cs" />
-    <Compile Include="LiveUpdateRequest.cs" />
     <Compile Include="OrderDetails.cs" />
     <Compile Include="ProductDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LiveUpdateService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PayUSharp.Core\PayUSharp.Core.csproj">

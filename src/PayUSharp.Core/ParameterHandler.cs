@@ -136,13 +136,13 @@ namespace PayU.Core
             return data;
         }
 
-        public string CreateOrderRequestHash()
+        public string CreateOrderRequestHash(string signatureKey)
         {
             var hashString = GetHashString();
 
             //Console.WriteLine("Hash String: {0}", hashString);
 
-            var hash = hashString.HashWithSignature(Configuration.Instance.SignatureKey);
+            var hash = hashString.HashWithSignature(signatureKey);
 
             //Console.WriteLine("Hash: {0}", hash);
             

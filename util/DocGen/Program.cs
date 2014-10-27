@@ -33,7 +33,7 @@ namespace Doc
     static void OutputMetadata()
     {
       using (var file = OpenFile("version.md")) {
-        var assembly = Assembly.GetAssembly(typeof(PayU.Core.Configuration));
+        var assembly = Assembly.GetAssembly(typeof(PayU.Core.PayuException));
         file.WriteLine("{0}", assembly.GetName().Version);
       }
 

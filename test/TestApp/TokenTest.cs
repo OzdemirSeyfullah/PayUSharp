@@ -1,7 +1,6 @@
 ﻿using System;
 using PayU;
 using PayU.Token;
-using Newtonsoft.Json;
 using System.Linq;
 using PayU.Core;
 
@@ -11,11 +10,7 @@ namespace TestApp
   {
     public static void Run()
     {
-      Configuration.Instance
-        .SetSignatureKey("4@ET=1()T=%y3S8b(r_]")
-        .SetEnvironment("https://secure.payuodeme.com/order/");
-
-      var service = new TokenService("TOKENTES");
+      var service = new TokenService("TOKENTES", "4@ET=1()T=%y3S8b(r_]");
 
       var token = "3257913";
       var orderRef = "EXT_" + new Random().Next(100000, 999999).ToString();

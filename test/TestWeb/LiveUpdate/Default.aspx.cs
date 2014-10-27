@@ -13,10 +13,6 @@ namespace TestWeb.LiveUpdate
             form1.Disabled = true;
             form1.Visible = false;
 
-            Configuration.Instance
-                .SetSignatureKey("4@ET=1()T=%y3S8b(r_]")
-                .SetEnvironment("https://secure.payuodeme.com/order/");
-
             var order = new OrderDetails();
             order.Merchant = "TOKENTES";
             order.OrderRef = "EXT_" + new Random().Next(100000, 999999).ToString();
@@ -61,9 +57,9 @@ namespace TestWeb.LiveUpdate
             order.AutoMode = true;
             order.ReturnUrl = string.Format("~/LiveUpdate/OrderComplete.aspx?orderid={0}", order.OrderRef).ToAbsoluteUrl();
 
-            var request = new LiveUpdateRequest(order);
+            var service = new LiveUpdateService("4@ET=1()T=%y3S8b(r_]");
 
-            ltrLiveUpdateForm.Text = request.RenderPaymentForm("Ödeme Yap");
+            ltrLiveUpdateForm.Text = service.RenderPaymentForm(order, "Ödeme Yap");
 
             ltrLiveUpdateForm.Text += @"<script>document.getElementById('payForm').submit();</script>";
         }

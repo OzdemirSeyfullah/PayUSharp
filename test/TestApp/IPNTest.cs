@@ -9,11 +9,7 @@ namespace TestApp
     public static class IPNTest
     {
         public static void Run()
-        {
-            Configuration.Instance
-                .SetSignatureKey("P5@F8*3!m0+?^9s3&u8(")
-                .SetEnvironment("https://secure.payuodeme.com/order/");
-            
+        {            
             /* IPN */
             var form = new NameValueCollection(){
                 {"SALEDATE", "2012-04-26 12:22:09"},
@@ -61,9 +57,10 @@ namespace TestApp
                 {"IPN_CC_EXP_DATE", "2012-07-18"}
             };
             
-            var ipn = IPNRequest.FromNameValueCollection(form);
+            var service = new IPNService("P5@F8*3!m0+?^9s3&u8(");
+            var request = service.ParseRequest(form);
             
-            Console.WriteLine("Response is: {0}", ipn.GenerateResponse());
+            Console.WriteLine("Response is: {0}", service.GenerateResponseForRequest(request));
         }
     }
 }

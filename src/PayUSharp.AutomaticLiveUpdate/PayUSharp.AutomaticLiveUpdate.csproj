@@ -38,6 +38,7 @@
     <Compile Include="OrderDetails.cs" />
     <Compile Include="ProductDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AluService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PayUSharp.Core\PayUSharp.Core.csproj">

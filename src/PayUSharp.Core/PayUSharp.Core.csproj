@@ -30,7 +30,6 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="Configuration.cs" />
     <Compile Include="HashHelper.cs" />
     <Compile Include="ParameterAttribute.cs" />
     <Compile Include="ParameterHandler.cs" />

@@ -21,8 +21,11 @@ namespace PayU.Token
       TOKEN_CANCEL
     }
 
-    internal TokenRequest() {}
+    internal TokenRequest(TokenService service) {
+      this.Service = service;
+    }
 
+    public TokenService Service { get; private set; }
     public string Merchant { get; set; }
     public string ReferenceNumber { get; set; }
     public string ExternalReference { get; set; }
@@ -44,7 +47,7 @@ namespace PayU.Token
 
       var str = builder.ToString();
 
-      return str.HashWithSignature(SignatureKey);
+      return str.HashWithSignature(Service.SignatureKey);
     }
 
     private Dictionary<string, object> GetData() {
@@ -85,7 +88,7 @@ namespace PayU.Token
         
       try
       {
-        if (Configuration.Instance.IgnoreSSLCertificate) {
+        if (Service.IgnoreSSLCertificate) {
           ServicePointManager.ServerCertificateValidationCallback = Validator;
         }
 //        Console.WriteLine("Posting data: {0}", string.Join(", ", data.AllKeys.Select(key => key + ": " + data[key]).ToArray()));

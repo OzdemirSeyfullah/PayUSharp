@@ -12,15 +12,18 @@ namespace PayU.Token
     public string SignatureKey { get; private set; }
     public string EndpointUrl { get; private set; }
 
-    public TokenService(string Merchant, string SignatureKey = null, string EndpointUrl = null)
+    public bool IgnoreSSLCertificate { get; private set; }
+
+    public TokenService(string Merchant, string SignatureKey, string EndpointUrl = null, bool IgnoreSSLCertificate = false)
     {
       this.Merchant = Merchant;
-      this.SignatureKey = SignatureKey ?? Configuration.Instance.SignatureKey;
+      this.SignatureKey = SignatureKey;
       this.EndpointUrl = EndpointUrl ?? DefaultEndpoint;
+      this.IgnoreSSLCertificate = IgnoreSSLCertificate;
     }
 
     public TokenResponse NewSale(string Token, string OrderRef, decimal Amount, string Currency = null) {
-      var request = new TokenRequest()
+      var request = new TokenRequest(this)
         {
           Method = PayU.Token.TokenRequest.MethodType.TOKEN_NEWSALE,
           Merchant = Merchant,
@@ -34,7 +37,7 @@ namespace PayU.Token
     }
 
     public TokenResponse GetInfo(string Token) {
-      var request = new TokenRequest()
+      var request = new TokenRequest(this)
         {
           Method = PayU.Token.TokenRequest.MethodType.TOKEN_GETINFO,
           Merchant = Merchant,
@@ -45,7 +48,7 @@ namespace PayU.Token
     }
 
     public TokenResponse Cancel(string Token, string Reason = null) {
-      var request = new TokenRequest()
+      var request = new TokenRequest(this)
         {
           Method = PayU.Token.TokenRequest.MethodType.TOKEN_CANCEL,
           Merchant = Merchant,

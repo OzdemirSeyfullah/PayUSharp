@@ -12,19 +12,16 @@ namespace TestWeb.IPN
     private static readonly Logger logger = LogManager.GetLogger("IPN");
 
         public void Page_Load() {
-
-            Configuration.Instance
-                .SetSignatureKey("P5@F8*3!m0+?^9s3&u8(");
-
             foreach (var key in Request.Form.AllKeys) {
               logger.Debug("Key: '{0}' - Value: '{1}'", key, Request.Form[key]);
             }
 
-            var ipn = IPNRequest.FromHttpRequest(Request);
+            var service = new IPNService("P5@F8*3!m0+?^9s3&u8(");
+            var request = service.ParseRequest(Request);
 
             // Do something with the data in the IPNRequest object.
             Response.ContentType = "text/xml";
-            Response.Write(ipn.GenerateResponse());
+            Response.Write(service.GenerateResponseForRequest(request));
             Response.End();
         }
 
