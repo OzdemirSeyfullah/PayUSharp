@@ -40,34 +40,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PayuException.cs" />
-    <Compile Include="Base\OrderDetails.cs" />
-    <Compile Include="Base\ProductDetails.cs" />
-    <Compile Include="Base\DeliveryDetails.cs" />
-    <Compile Include="Base\BillingDetails.cs" />
-    <Compile Include="ParameterAttribute.cs" />
-    <Compile Include="ParameterHandler.cs" />
-    <Compile Include="LiveUpdate\OrderDetails.cs" />
-    <Compile Include="LiveUpdate\ProductDetails.cs" />
-    <Compile Include="LiveUpdate\BillingDetails.cs" />
-    <Compile Include="LiveUpdate\DeliveryDetails.cs" />
-    <Compile Include="AutomaticLiveUpdate\AluRequest.cs" />
-    <Compile Include="AutomaticLiveUpdate\BillingDetails.cs" />
-    <Compile Include="AutomaticLiveUpdate\CardDetails.cs" />
-    <Compile Include="AutomaticLiveUpdate\AluResponse.cs" />
-    <Compile Include="AutomaticLiveUpdate\ProductDetails.cs" />
-    <Compile Include="AutomaticLiveUpdate\DeliveryDetails.cs" />
-    <Compile Include="AutomaticLiveUpdate\OrderDetails.cs" />
-    <Compile Include="LiveUpdate\LiveUpdateRequest.cs" />
-    <Compile Include="HashHelper.cs" />
-    <Compile Include="IPN\IPNRequest.cs" />
-    <Compile Include="IPN\IPNOrderStatus.cs" />
-    <Compile Include="IPN\IPNProduct.cs" />
-    <Compile Include="Token\TokenRequest.cs" />
-    <Compile Include="Token\TokenResponse.cs" />
-    <Compile Include="Token\TokenService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -79,8 +52,8 @@
   -->
   <ItemGroup>
     <Folder Include="IPN\" />
-    <Folder Include="Base\" />
     <Folder Include="LiveUpdate\" />
     <Folder Include="Token\" />
+    <Folder Include="AutomaticLiveUpdate\" />
   </ItemGroup>
 </Project>
