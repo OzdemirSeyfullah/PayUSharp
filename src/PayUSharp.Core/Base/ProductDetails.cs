@@ -1,6 +1,7 @@
 using System;
+using PayU.Core;
 
-namespace PayU.Base
+namespace PayU.Core.Base
 {
     public class ProductDetails
     {

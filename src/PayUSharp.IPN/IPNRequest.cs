@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Collections.Specialized;
 using System.Globalization;
+using PayU.Core;
 
 namespace PayU.IPN
 {

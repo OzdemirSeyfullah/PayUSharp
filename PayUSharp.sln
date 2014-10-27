@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayUSharp", "src\PayUSharp\PayUSharp.csproj", "{3BAAC9D2-F1E0-4027-82A4-99FDD0F5FDDB}"
@@ -152,7 +152,7 @@ Global
 		$0.DotNetNamingPolicy = $4
 		$4.DirectoryNamespaceAssociation = PrefixedHierarchical
 		$4.ResourceNamePolicy = FileFormatDefault
-		version = 1.0.2.2
+		version = 2.0.0.0
 	EndGlobalSection
     GlobalSection(SolutionProperties) = preSolution
         HideSolutionNode = FALSE

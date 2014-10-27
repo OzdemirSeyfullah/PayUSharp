@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using PayU.Core;
 
 namespace PayU.LiveUpdate
 {
@@ -15,7 +16,7 @@ namespace PayU.LiveUpdate
         ES
     }
 
-    public class OrderDetails: PayU.Base.OrderDetails
+    public class OrderDetails: PayU.Core.Base.OrderDetails
     {
         public OrderDetails ()
         {
@@ -30,7 +31,7 @@ namespace PayU.LiveUpdate
         public bool? TokenEnable { get; set; }
 
         [Parameter(Name = "LU_TOKEN_TYPE", SortIndex = 16, ExcludeFromHash = true)]
-        public PayU.Base.TokenType? TokenType { get; set; }
+        public PayU.Core.Base.TokenType? TokenType { get; set; }
 
         [Parameter(Name = "BACK_REF", ExcludeFromHash = true)]
         public string ReturnUrl { get; set; }

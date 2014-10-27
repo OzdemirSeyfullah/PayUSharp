@@ -1,5 +1,6 @@
 ﻿using System;
 using PayU.Token;
+using PayU.Core;
 
 namespace PayU.Token
 {

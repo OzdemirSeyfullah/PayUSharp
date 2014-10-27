@@ -2,7 +2,7 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace PayU
+namespace PayU.Core
 {
     public static class HashHelper
     {

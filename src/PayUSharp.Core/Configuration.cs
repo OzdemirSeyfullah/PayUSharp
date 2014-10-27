@@ -1,4 +1,4 @@
-namespace PayU
+namespace PayU.Core
 {
     public class Configuration
     {

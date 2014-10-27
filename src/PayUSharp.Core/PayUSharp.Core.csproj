@@ -8,7 +8,7 @@
     <RootNamespace>PayUSharp.Core</RootNamespace>
     <AssemblyName>PayUSharp.Core</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <ReleaseVersion>1.0.2.2</ReleaseVersion>
+    <ReleaseVersion>2.0.0.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,5 +39,9 @@
     <Compile Include="Base\DeliveryDetails.cs" />
     <Compile Include="Base\OrderDetails.cs" />
     <Compile Include="Base\ProductDetails.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
   </ItemGroup>
 </Project>

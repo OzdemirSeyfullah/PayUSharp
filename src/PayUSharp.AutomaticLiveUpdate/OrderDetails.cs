@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using PayU.Core;
 
 namespace PayU.AutomaticLiveUpdate
 {
-    public class OrderDetails: PayU.Base.OrderDetails
+    public class OrderDetails: PayU.Core.Base.OrderDetails
     {
         public OrderDetails() {
             ProductDetails = new List<ProductDetails>();
@@ -13,7 +14,7 @@ namespace PayU.AutomaticLiveUpdate
         public bool? TokenEnable { get; set; }
 
         [Parameter(Name = "LU_TOKEN_TYPE", SortIndex = 16)]
-        public PayU.Base.TokenType? TokenType { get; set; }
+        public PayU.Core.Base.TokenType? TokenType { get; set; }
 
         [Parameter(IsNested = true)]
         public IList<ProductDetails> ProductDetails { get; set; }

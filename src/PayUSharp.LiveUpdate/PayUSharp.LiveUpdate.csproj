@@ -7,7 +7,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>PayUSharp.LiveUpdate</RootNamespace>
     <AssemblyName>PayUSharp.LiveUpdate</AssemblyName>
-    <ReleaseVersion>1.0.2.2</ReleaseVersion>
+    <ReleaseVersion>2.0.0.0</ReleaseVersion>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -35,5 +35,16 @@
     <Compile Include="LiveUpdateRequest.cs" />
     <Compile Include="OrderDetails.cs" />
     <Compile Include="ProductDetails.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PayUSharp.Core\PayUSharp.Core.csproj">
+      <Project>{E2F4B950-7EBC-445D-949C-16C94E2AE99C}</Project>
+      <Name>PayUSharp.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
   </ItemGroup>
 </Project>

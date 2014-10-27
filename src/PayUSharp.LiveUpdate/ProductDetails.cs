@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using PayU.Core;
 
 namespace PayU.LiveUpdate
 {
@@ -9,7 +10,7 @@ namespace PayU.LiveUpdate
         NET
     }
 
-    public class ProductDetails: PayU.Base.ProductDetails
+    public class ProductDetails: PayU.Core.Base.ProductDetails
     {
         public ProductDetails() {
             PriceType = PriceType.NET;

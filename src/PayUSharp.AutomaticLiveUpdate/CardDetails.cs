@@ -1,3 +1,5 @@
+using PayU.Core;
+
 namespace PayU.AutomaticLiveUpdate
 {
     public class CardDetails

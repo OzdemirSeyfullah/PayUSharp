@@ -8,7 +8,7 @@
     <RootNamespace>PayUSharp.IPN</RootNamespace>
     <AssemblyName>PayUSharp.IPN</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <ReleaseVersion>1.0.2.2</ReleaseVersion>
+    <ReleaseVersion>2.0.0.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,5 +33,18 @@
     <Compile Include="IPNOrderStatus.cs" />
     <Compile Include="IPNProduct.cs" />
     <Compile Include="IPNRequest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PayUSharp.Core\PayUSharp.Core.csproj">
+      <Project>{E2F4B950-7EBC-445D-949C-16C94E2AE99C}</Project>
+      <Name>PayUSharp.Core</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

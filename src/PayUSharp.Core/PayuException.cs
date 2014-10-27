@@ -1,6 +1,6 @@
 using System;
 
-namespace PayU
+namespace PayU.Core
 {
     public class PayuException: ApplicationException
     {

@@ -6,6 +6,7 @@ using System.Text;
 using System.Xml.Serialization;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
+using PayU.Core;
 
 namespace PayU.AutomaticLiveUpdate
 {

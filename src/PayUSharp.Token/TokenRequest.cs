@@ -8,6 +8,7 @@ using System.Linq;
 using System.Globalization;
 using System.Collections.Specialized;
 using Newtonsoft.Json;
+using PayU.Core;
 
 namespace PayU.Token
 {

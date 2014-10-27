@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using PayU.Core;
 
-namespace PayU.Base
+namespace PayU.Core.Base
 {
     public enum TokenType 
     {

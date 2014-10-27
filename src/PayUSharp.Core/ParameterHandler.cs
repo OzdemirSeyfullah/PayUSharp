@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace PayU
+namespace PayU.Core
 {
     internal class ParameterHandler
     {
