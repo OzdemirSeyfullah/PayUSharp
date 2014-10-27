@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using PayU.IPN;
 using System.Reflection;
 using System.Linq;
@@ -45,14 +45,15 @@ namespace Doc
 
     static void OutputMetadata()
     {
-      using (var file = OpenFile("version.md")) {
-        var assembly = Assembly.GetAssembly(typeof(PayU.Core.PayuException));
-        file.WriteLine("{0}", assembly.GetName().Version);
-      }
+      var filename = RelativePath("support/metadata.yml");
+      var assembly = Assembly.GetAssembly(typeof(PayU.Core.PayuException));
+      var version = assembly.GetName().Version.ToString();
+      var date = string.Format("{0:d}", DateTime.Now);
 
-      using (var file = OpenFile("date.md")) {
-        file.WriteLine("{0:d}", DateTime.Now);
-      }
+      var contents = File.ReadAllText(filename + ".template");
+      contents = contents.Replace("{{VERSION}}", version);
+      contents = contents.Replace("{{DATE}}", date);
+      File.WriteAllText(filename, contents);
     }
 
     static void ProcessALU()
@@ -96,16 +97,20 @@ namespace Doc
         var fmt = string.Format("| `{0}{1}.{{0}}` | `{{2}}` | `{{1}}{1}` |", prop.Name, enumerable ? "[idx]" : "");
         Process<ParameterAttribute>(type, (_prop, _attribute) => WritePropToFile(fmt, _prop, _attribute, file));
       } else {
-        file.WriteLine(format, prop.Name, attribute.Name.Replace("[]", ""), prop.PropertyType.Name()); 
+        file.WriteLine(format, prop.Name, attribute.Name.Replace("[]", ""), prop.PropertyType.Name());
       }
     }
 
+    private static string RelativePath(string filename) {
+        return Path.Combine(OutputBasePath, filename);
+    }
+
     private static StreamWriter OpenFile(string filename) {
-      return new StreamWriter(Path.Combine(OutputBasePath, filename), false);
+      return new StreamWriter(RelativePath(filename), false);
     }
 
     private static void WritePropToFile(string format, PropertyInfo prop,  XmlElementAttribute attribute, StreamWriter file) {
-      file.WriteLine(format, prop.Name, attribute.ElementName.Replace("[]", ""), prop.PropertyType.Name()); 
+      file.WriteLine(format, prop.Name, attribute.ElementName.Replace("[]", ""), prop.PropertyType.Name());
       if (prop.Name.EndsWith("DateAsString")) {
         file.WriteLine(format, prop.Name.Replace("DateAsString", ""), attribute.ElementName, typeof(DateTime).Name());
       }

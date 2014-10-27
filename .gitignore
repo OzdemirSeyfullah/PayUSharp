@@ -3,6 +3,7 @@
 
 # dist folder
 dist/
+metadata.yml
 
 # User-specific files
 *.suo

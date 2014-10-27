@@ -15,7 +15,7 @@ Herhangi bir PayU işlemi gerçekleştirilmeden önce (tercihen 1 kere uygulama 
 
 IPN için zorunlu alan `SignatureKey` alanıdır. Örnek kullanım şu şekildedir:
 
-```{.cs language=csh}
+```.cs
   PayU.Configuration.Instance.SetSignatureKey('signaturekey');
 ```
 
@@ -23,7 +23,7 @@ IPN için zorunlu alan `SignatureKey` alanıdır. Örnek kullanım şu şekilded
 
 Sipariş bilgilerinde verdiğiniz IPN adresinizin `http://example.com/ipn/default.aspx` olduğunu farzedelim. Sipariş onayı verildiğinde bu adrese IPN bilgileri HTTP POST olarak gönderilecektir. Sayfa kodunuzda, gönderilen bu bilgileri yorumlamak için aşağıdaki örnekte olduğu gibi `IPNRequest.FromHttpRequest` metodu kullanılarak yeni bir `IPNRequest` nesnesi yaratılmalıdır. Bu metod ile `IPNRequest` nesnesi yaratılırken gelen POST alanları doğru bir şekilde işlenerek nesnenin ilgili alanlarına kolay erişim icin eklenecektir.
 
-```{.cs language=csh}
+```.cs
 public partial class Default: System.Web.UI.Page {
   public void Page_Load() {
     // Some code here
@@ -44,7 +44,7 @@ Eğer IPN isteği başarılı bir şekilde işlendiyse HTTP 200 kodu ile PayU d�
 
 Bu cevap alanındaki Hash'i hesaplamak ve doğru XML'i oluşturmak için de `IPNRequest` nesnesinin `GenerateResponse` metodu kullanılmalıdır. Bunun için örnek kod şu şekildedir:
 
-```{.cs language=csh}
+```.cs
 public partial class Default : System.Web.UI.Page
 {
   public void Page_Load() {

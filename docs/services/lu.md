@@ -56,7 +56,7 @@ LiveUpdate sipariş bilgileri PayUSharp kütüphanesinde `PayU.LiveUpdate.OrderD
 
   order.BillingDetails = new PayU.LiveUpdate.BillingDetails {
       FirstName = "Ahmet",
-      LastName = "Yılmaz",
+      LastName = "Yilmaz",
       Email = "ahmet.yilmaz@payu.com.tr",
       City = "Kagithane", // Ilce/Semt
       State = "Istanbul", // Sehir
@@ -90,7 +90,7 @@ Oluşturulan bu HTML formu kullanılan web framework'üne uygun bir şekilde mü
 
 Son olarak, sipariş bilgilerini içeren bu HTML form'unun POST metodu ile submit edilmesi gerekmektedir. Eğer dükkanınızın akışı bu işlemi kullanıcının yapması üzerine kurulu ise yukarıda yapılanlar sizin için yeterli olacaktır. Fakat akışınız bu noktada kullanıcıyı otomatik olarak Ortak Ödeme Sayfasına yönlendirmek üzerine kurulu ise, o zaman sayfanızda aşağıdaki gibi bir JavaScript kod parçacığı eklenmelidir:
 
-```
+```html
 <script>
   // DIKKAT: Olusturulmus olan PayU form'unun Form ID'si kullanilmali...
   document.getElementById('PayuLiveUpdateForm').submit();
