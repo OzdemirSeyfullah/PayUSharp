@@ -1,0 +1,113 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayUSharp.Core", "PayUSharp.Core\PayUSharp.Core.csproj", "{E2F4B950-7EBC-445D-949C-16C94E2AE99C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayUSharp.AutomaticLiveUpdate", "PayUSharp.AutomaticLiveUpdate\PayUSharp.AutomaticLiveUpdate.csproj", "{3A570DDC-0BFF-48F2-AD1E-5AD036655FBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayUSharp.LiveUpdate", "PayUSharp.LiveUpdate\PayUSharp.LiveUpdate.csproj", "{429C96E4-0F8F-46A7-A084-39032255AF5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayUSharp.IPN", "PayUSharp.IPN\PayUSharp.IPN.csproj", "{D911F02F-E9E3-406C-888F-511C6621B52A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayUSharp.Token", "PayUSharp.Token\PayUSharp.Token.csproj", "{DAD78270-6686-4EEB-9318-DDF3FCC04A33}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A570DDC-0BFF-48F2-AD1E-5AD036655FBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A570DDC-0BFF-48F2-AD1E-5AD036655FBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A570DDC-0BFF-48F2-AD1E-5AD036655FBD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3A570DDC-0BFF-48F2-AD1E-5AD036655FBD}.Debug|x86.Build.0 = Debug|Any CPU
+		{3A570DDC-0BFF-48F2-AD1E-5AD036655FBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A570DDC-0BFF-48F2-AD1E-5AD036655FBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A570DDC-0BFF-48F2-AD1E-5AD036655FBD}.Release|x86.ActiveCfg = Release|Any CPU
+		{3A570DDC-0BFF-48F2-AD1E-5AD036655FBD}.Release|x86.Build.0 = Release|Any CPU
+		{429C96E4-0F8F-46A7-A084-39032255AF5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{429C96E4-0F8F-46A7-A084-39032255AF5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{429C96E4-0F8F-46A7-A084-39032255AF5E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{429C96E4-0F8F-46A7-A084-39032255AF5E}.Debug|x86.Build.0 = Debug|Any CPU
+		{429C96E4-0F8F-46A7-A084-39032255AF5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{429C96E4-0F8F-46A7-A084-39032255AF5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{429C96E4-0F8F-46A7-A084-39032255AF5E}.Release|x86.ActiveCfg = Release|Any CPU
+		{429C96E4-0F8F-46A7-A084-39032255AF5E}.Release|x86.Build.0 = Release|Any CPU
+		{D911F02F-E9E3-406C-888F-511C6621B52A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D911F02F-E9E3-406C-888F-511C6621B52A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D911F02F-E9E3-406C-888F-511C6621B52A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D911F02F-E9E3-406C-888F-511C6621B52A}.Debug|x86.Build.0 = Debug|Any CPU
+		{D911F02F-E9E3-406C-888F-511C6621B52A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D911F02F-E9E3-406C-888F-511C6621B52A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D911F02F-E9E3-406C-888F-511C6621B52A}.Release|x86.ActiveCfg = Release|Any CPU
+		{D911F02F-E9E3-406C-888F-511C6621B52A}.Release|x86.Build.0 = Release|Any CPU
+		{DAD78270-6686-4EEB-9318-DDF3FCC04A33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAD78270-6686-4EEB-9318-DDF3FCC04A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAD78270-6686-4EEB-9318-DDF3FCC04A33}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DAD78270-6686-4EEB-9318-DDF3FCC04A33}.Debug|x86.Build.0 = Debug|Any CPU
+		{DAD78270-6686-4EEB-9318-DDF3FCC04A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAD78270-6686-4EEB-9318-DDF3FCC04A33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAD78270-6686-4EEB-9318-DDF3FCC04A33}.Release|x86.ActiveCfg = Release|Any CPU
+		{DAD78270-6686-4EEB-9318-DDF3FCC04A33}.Release|x86.Build.0 = Release|Any CPU
+		{E2F4B950-7EBC-445D-949C-16C94E2AE99C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2F4B950-7EBC-445D-949C-16C94E2AE99C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2F4B950-7EBC-445D-949C-16C94E2AE99C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E2F4B950-7EBC-445D-949C-16C94E2AE99C}.Debug|x86.Build.0 = Debug|Any CPU
+		{E2F4B950-7EBC-445D-949C-16C94E2AE99C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2F4B950-7EBC-445D-949C-16C94E2AE99C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2F4B950-7EBC-445D-949C-16C94E2AE99C}.Release|x86.ActiveCfg = Release|Any CPU
+		{E2F4B950-7EBC-445D-949C-16C94E2AE99C}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.TabWidth = 2
+		$1.IndentWidth = 2
+		$1.inheritsSet = VisualStudio
+		$1.inheritsScope = text/plain
+		$1.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $2
+		$2.IndentSwitchBody = True
+		$2.IndentBlocksInsideExpressions = True
+		$2.AnonymousMethodBraceStyle = NextLine
+		$2.PropertyBraceStyle = NextLine
+		$2.PropertyGetBraceStyle = NextLine
+		$2.PropertySetBraceStyle = NextLine
+		$2.EventBraceStyle = NextLine
+		$2.EventAddBraceStyle = NextLine
+		$2.EventRemoveBraceStyle = NextLine
+		$2.StatementBraceStyle = NextLine
+		$2.ElseNewLinePlacement = NewLine
+		$2.CatchNewLinePlacement = NewLine
+		$2.FinallyNewLinePlacement = NewLine
+		$2.WhileNewLinePlacement = DoNotCare
+		$2.ArrayInitializerWrapping = DoNotChange
+		$2.ArrayInitializerBraceStyle = NextLine
+		$2.BeforeMethodDeclarationParentheses = False
+		$2.BeforeMethodCallParentheses = False
+		$2.BeforeConstructorDeclarationParentheses = False
+		$2.NewLineBeforeConstructorInitializerColon = NewLine
+		$2.NewLineAfterConstructorInitializerColon = SameLine
+		$2.BeforeDelegateDeclarationParentheses = False
+		$2.NewParentheses = False
+		$2.SpacesBeforeBrackets = False
+		$2.inheritsSet = Mono
+		$2.inheritsScope = text/x-csharp
+		$2.scope = text/x-csharp
+		$0.TextStylePolicy = $3
+		$3.FileWidth = 120
+		$3.EolMarker = Windows
+		$3.inheritsSet = VisualStudio
+		$3.inheritsScope = text/plain
+		$3.scope = text/plain
+		$0.DotNetNamingPolicy = $4
+		$4.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$4.ResourceNamePolicy = FileFormatDefault
+		version = 2.0.0.0
+	EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
+EndGlobal
