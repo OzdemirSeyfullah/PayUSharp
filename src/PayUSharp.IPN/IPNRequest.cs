@@ -72,7 +72,7 @@ namespace PayU.IPN
         public string InstallmentProgramName { get; set; }
         
         [XmlElement("IPN_INSTALLMENTS_NUMBER")]
-        public int InstallmentNumber { get; set; }
+        public string InstallmentNumber { get; set; }
         
         [XmlElement("IPN_INSTALLMENTS_PROFIT")]
         public string InstallmentProfit { get; set; }
