@@ -8,6 +8,7 @@ using System.CodeDom.Compiler;
 using PayU;
 using Fasterflect;
 using System.Collections.Generic;
+using PayU.Core;
 
 namespace Doc
 {
@@ -32,7 +33,7 @@ namespace Doc
     static void OutputMetadata()
     {
       using (var file = OpenFile("version.md")) {
-        var assembly = Assembly.GetAssembly(typeof(PayU.Configuration));
+        var assembly = Assembly.GetAssembly(typeof(PayU.Core.Configuration));
         file.WriteLine("{0}", assembly.GetName().Version);
       }
 

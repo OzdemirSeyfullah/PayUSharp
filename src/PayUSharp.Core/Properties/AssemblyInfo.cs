@@ -29,3 +29,4 @@ using System.Runtime.CompilerServices;
 [assembly:InternalsVisibleTo("PayUSharp.LiveUpdate")]
 [assembly:InternalsVisibleTo("PayUSharp.IPN")]
 [assembly:InternalsVisibleTo("PayUSharp.Token")]
+[assembly:InternalsVisibleTo("DocGen")]

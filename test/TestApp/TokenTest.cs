@@ -3,6 +3,7 @@ using PayU;
 using PayU.Token;
 using Newtonsoft.Json;
 using System.Linq;
+using PayU.Core;
 
 namespace TestApp
 {

@@ -3,6 +3,7 @@ using System.Text;
 using PayU.LiveUpdate;
 using PayU;
 using PayU.IPN;
+using PayU.Core;
 
 namespace TestWeb
 {

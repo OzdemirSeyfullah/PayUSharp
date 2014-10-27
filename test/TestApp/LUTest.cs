@@ -1,6 +1,7 @@
 using System;
 using PayU.LiveUpdate;
 using PayU;
+using PayU.Core;
 
 namespace TestApp
 {
@@ -17,7 +18,7 @@ namespace TestApp
             order.OrderRef = "6112457";
 
             order.TokenEnable = true;
-            order.TokenType = PayU.Base.TokenType.PAY_ON_TIME;
+            order.TokenType = PayU.Core.Base.TokenType.PAY_ON_TIME;
 
             order.ProductDetails.Add(new ProductDetails
             {

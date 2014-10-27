@@ -2,6 +2,7 @@
 using PayU.LiveUpdate;
 using System;
 using PayU;
+using PayU.Core;
 
 namespace TestWeb.LiveUpdate
 {
@@ -21,7 +22,7 @@ namespace TestWeb.LiveUpdate
             order.OrderRef = "EXT_" + new Random().Next(100000, 999999).ToString();
             
             order.TokenEnable = true;
-            order.TokenType = PayU.Base.TokenType.PAY_ON_TIME;
+            order.TokenType = PayU.Core.Base.TokenType.PAY_ON_TIME;
 
             order.ProductDetails.Add(new ProductDetails
                                           {

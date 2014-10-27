@@ -45,9 +45,25 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\PayUSharp\PayUSharp.csproj">
-      <Project>{3BAAC9D2-F1E0-4027-82A4-99FDD0F5FDDB}</Project>
-      <Name>PayUSharp</Name>
+    <ProjectReference Include="..\..\src\PayUSharp.AutomaticLiveUpdate\PayUSharp.AutomaticLiveUpdate.csproj">
+      <Project>{3A570DDC-0BFF-48F2-AD1E-5AD036655FBD}</Project>
+      <Name>PayUSharp.AutomaticLiveUpdate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\PayUSharp.Core\PayUSharp.Core.csproj">
+      <Project>{E2F4B950-7EBC-445D-949C-16C94E2AE99C}</Project>
+      <Name>PayUSharp.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\PayUSharp.IPN\PayUSharp.IPN.csproj">
+      <Project>{D911F02F-E9E3-406C-888F-511C6621B52A}</Project>
+      <Name>PayUSharp.IPN</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\PayUSharp.LiveUpdate\PayUSharp.LiveUpdate.csproj">
+      <Project>{429C96E4-0F8F-46A7-A084-39032255AF5E}</Project>
+      <Name>PayUSharp.LiveUpdate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\PayUSharp.Token\PayUSharp.Token.csproj">
+      <Project>{DAD78270-6686-4EEB-9318-DDF3FCC04A33}</Project>
+      <Name>PayUSharp.Token</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

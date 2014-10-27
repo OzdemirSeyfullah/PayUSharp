@@ -1,6 +1,7 @@
 using System;
 using PayU.AutomaticLiveUpdate;
 using PayU;
+using PayU.Core;
 
 namespace TestApp
 {
@@ -17,7 +18,7 @@ namespace TestApp
             order.Merchant = "TOKENTES";
 
             order.TokenEnable = true;
-            order.TokenType = PayU.Base.TokenType.PAY_ON_TIME;
+            order.TokenType = PayU.Core.Base.TokenType.PAY_ON_TIME;
 
             order.OrderRef = "EXT_" + new Random().Next(100000, 999999).ToString();
             order.OrderDate = DateTime.UtcNow;

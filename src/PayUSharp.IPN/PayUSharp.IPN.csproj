@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D911F02F-E9E3-406C-888F-511C6621B52A}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>PayUSharp.IPN</RootNamespace>
+    <RootNamespace>PayU.IPN</RootNamespace>
     <AssemblyName>PayUSharp.IPN</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <ReleaseVersion>2.0.0.0</ReleaseVersion>

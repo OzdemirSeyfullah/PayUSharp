@@ -2,6 +2,7 @@ using System;
 using PayU;
 using System.Collections.Specialized;
 using PayU.IPN;
+using PayU.Core;
 
 namespace TestApp
 {
