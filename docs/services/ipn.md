@@ -9,25 +9,27 @@ olarak anlatılmıştır.
 
 PayUSharp kütüphanesi ile gönderilen IPN alanlarının işlenmesi ve yanıt olarak gönderilmesi gereken bilginin doğru şekilde oluşturulması işlemleri kolaylaştırılmıştır.
 
-### Ayarlar
+### Başlangıç {#ipnstart}
 
-Herhangi bir PayU işlemi gerçekleştirilmeden önce (tercihen 1 kere uygulama başlangıcında) PayUSharp kütüphanesinin ayarlarının doğru bir şekilde yapılması gerekmektedir. Bunun için `PayU.Configuration` sınıfı kullanılmaktadır.
+Herhangi bir LiveUpdate işlemi gerçekleştirmeden önce yeni bir `PayU.IPN.IPNService` nesnesi yaratılmalıdır. Bu nesneye geçirilmesi zorunlu olan tek parametre `signatureKey` alanıdir ve PayU'dan alınan imza anahtarı değeri geçirilmelidir.
 
-IPN için zorunlu alan `SignatureKey` alanıdır. Örnek kullanım şu şekildedir:
+Örnek kullanım şu şekildedir:
 
-```.cs
-  PayU.Configuration.Instance.SetSignatureKey('signaturekey');
+```cs
+  var service = new PayU.IPN.IPNService('signatureKey');
 ```
 
 ### IPN Alanlarının İşlenmesi
 
-Sipariş bilgilerinde verdiğiniz IPN adresinizin `http://example.com/ipn/default.aspx` olduğunu farzedelim. Sipariş onayı verildiğinde bu adrese IPN bilgileri HTTP POST olarak gönderilecektir. Sayfa kodunuzda, gönderilen bu bilgileri yorumlamak için aşağıdaki örnekte olduğu gibi `IPNRequest.FromHttpRequest` metodu kullanılarak yeni bir `IPNRequest` nesnesi yaratılmalıdır. Bu metod ile `IPNRequest` nesnesi yaratılırken gelen POST alanları doğru bir şekilde işlenerek nesnenin ilgili alanlarına kolay erişim icin eklenecektir.
+Sipariş bilgilerinde verdiğiniz IPN adresinizin `http://example.com/ipn/default.aspx` olduğunu farzedelim. Sipariş onayı verildiğinde bu adrese IPN bilgileri HTTP POST olarak gönderilecektir. Sayfa kodunuzda, gönderilen bu bilgileri yorumlamak için aşağıdaki örnekte olduğu gibi [Başlangıç](#ipnstart) adımında yarattığımız `IPNService` nesnesinin `ParseRequest` metodu kullanılarak yeni bir `IPNRequest` nesnesi yaratılmalıdır. Bu metod ile `IPNRequest` nesnesi yaratılırken gelen POST alanları doğru bir şekilde işlenerek nesnenin ilgili alanlarına kolay erişim icin eklenecektir.
 
 ```.cs
 public partial class Default: System.Web.UI.Page {
   public void Page_Load() {
     // Some code here
-    IPNRequest ipn = IPNRequest.FromHttpRequest(Request);
+    var service = new PayU.IPN.IPNService('signatureKey');
+
+    PayU.IPN.IPNRequest ipn = service.ParseRequest(Request);
 
     Console.WriteLine("Siparis Durumu: {0}", ipn.OrderStatus);
     // Some code here
@@ -42,18 +44,20 @@ Eğer IPN isteği başarılı bir şekilde işlendiyse HTTP 200 kodu ile PayU d�
 > PayU, aşağıdaki formatta (sayfanın herhangi bir yerinde) bir yanıt bekler:
 > <epayment>DATE|HASH</epayment>
 
-Bu cevap alanındaki Hash'i hesaplamak ve doğru XML'i oluşturmak için de `IPNRequest` nesnesinin `GenerateResponse` metodu kullanılmalıdır. Bunun için örnek kod şu şekildedir:
+Bu cevap alanındaki Hash'i hesaplamak ve doğru XML'i oluşturmak için de [Başlangıç](#ipnstart) adımında yarattığımız `IPNService` nesnesinin `GenerateResponseForRequest` metodu kullanılmalıdır. Bunun için örnek kod şu şekildedir:
 
 ```.cs
 public partial class Default : System.Web.UI.Page
 {
   public void Page_Load() {
-    var ipn = IPNRequest.FromHttpRequest(Request);
+    var service = new PayU.IPN.IPNService('signatureKey');
+
+    var ipn = service.ParseRequest(Request);
 
     Console.WriteLine("Siparis Durumu: {0}", ipn.OrderStatus);
 
     Response.ContentType = "text/xml";
-    Response.Write(ipn.GenerateResponse());
+    Response.Write(service.GenerateResponseForRequest(ipn));
     Response.End();
   }
 }

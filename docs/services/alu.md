@@ -1,18 +1,18 @@
-Automatic LiveUpdate ödeme bilgilerinin Merchant tarafından kullanıcıdan alındığı ve işlenmek için sipariş bilgileri ile birlikte PayU'ya gönderildiği entegrasyon metodudur. Bu entegrasyonda kullanıcılar Merchant'ın sipariş sayfalarından hiç ayrılmazlar (3D Secure durumu hariç) ve ödeme Merchant ile PayU arasında bitirilir.
+Automatic LiveUpdate ödeme bilgilerinin işyeri tarafından kullanıcıdan alındığı ve işlenmek için sipariş bilgileri ile birlikte PayU'ya gönderildiği entegrasyon metodudur. Bu entegrasyonda kullanıcılar işyerinin sipariş sayfalarından hiç ayrılmazlar (3D Secure durumu hariç) ve ödeme Merchant ile PayU arasında bitirilir.
 
 PayUSharp kütüphanesi ile bahsedilen sipariş ve ödeme bilgilerinin oluşturulması, gereken formatta PayU'ya iletilmesi ve PayU'dan dönen cevabın işlenmesi işlemleri kolaylaştırılmıştır.
 
-### Ayarlar
+### Başlangıç {#alustart}
 
-Herhangi bir PayU işlemi gerçekleştirilmeden önce (tercihen 1 kere uygulama başlangıcında) PayUSharp kütüphanesinin ayarlarının doğru bir şekilde yapılması gerekmektedir. Bunun için `PayU.Configuration` sınıfı kullanılmaktadır.
+Herhangi bir Automatic LiveUpdate işlemi gerçekleştirmeden önce yeni bir `PayU.AutomaticLiveUpdate.ALUService` nesnesi yaratılmalıdır. Bu nesneye geçirilmesi zorunlu olan tek parametre `signatureKey` alanıdir ve PayU'dan alınan imza anahtarı değeri geçirilmelidir.
 
-Automatic LiveUpdate için zorunlu ayarlar `SignatureKey` ve `Environment` alanlarıdır. Örnek kullanım şu şekildedir:
+Örnek kullanım şu şekildedir:
 
 ```cs
-  PayU.Configuration.Instance
-      .SetSignatureKey('signaturekey')
-      .SetEnvironment("https://secure.payuodeme.com/order/");
+  var service = new PayU.AutomaticLiveUpdate.ALUService('signatureKey');
 ```
+
+Ayrıca servisin testler sırasında kullanılabilecek `endpointUrl` ve `ignoreSSLCertificate` parametreleri de bulunmaktadır. Bu parametrelerin varsayılan değerlerini PayU tarafından tavsiye edilmedikçe değiştirmemeniz önerilir.
 
 ### Automatic LiveUpdate Siparişinin Oluşturulması
 
@@ -94,22 +94,22 @@ order.ClientIpAddress = Request.UserHostAddress;
 
 Automatic LiveUpdate sürecinin tamamlanabilmesi için oluşturulmuş olan `PayU.AutomaticLiveUpdate.OrderDetails` tipindeki sipariş bilgisi sunucu tarafında PayU Automatic LiveUpdate adresine POST edilmelidir.
 
-PayUSharp kütüphanesi bu POST işlemi için `PayU.AutomaticLiveUpdate.AluRequest` sınıfını kullanmaktadır. Sipariş bilgisi `PayU.AutomaticLiveUpdate.AluRequest` sınıfının `ProcessPayment` metoduna verilerek bu POST işleminin gerçekleşmesi sağlanır:
+PayUSharp kütüphanesi bu POST işlemi için [Başlangıç](#alustart) adımında yarattığımız `ALUService` nesnesini kullanmaktadır. Sipariş bilgisi bu nesnenin `ProcessPayment` metoduna verilerek bu POST işleminin gerçekleşmesi sağlanır:
 
 ```cs
-  var response = PayU.AutomaticLiveUpdate.AluRequest.ProcessPayment(order);
+  var response = service.ProcessPayment(order);
 ```
 
 **DİKKAT:** Bu metod çağırıldığında sunucu kodu PayU Automatic LiveUpdate sayfası ile HTTP POST üzerinden iletişime geçer ve PayU tarafından işlem yapılıp cevap dönene kadar bu metod dönmez. Bu işlemin kullanıcıyı sayfada bekleteceği ve sunucu tarafında request block edeceği unutulmamalıdır.
 
 ### Automatic LiveUpdate Sipariş Sonucunun İşlenmesi
 
-`AluRequest.ProcessPayment` metodunun çağırılması sonucunda dönen cevap `PayU.AutomaticLiveUpdate.AluResponse` tipinden olacaktır. Bu cevap nesnesi gerçekleşen veya hata veren ödeme sonucunu veren [alanlara](#alufields) sahiptir.
+`ProcessPayment` metodunun çağırılması sonucunda dönen cevap `PayU.AutomaticLiveUpdate.ALUResponse` tipinden olacaktır. Bu cevap nesnesi gerçekleşen veya hata veren ödeme sonucunu veren [alanlara](#alufields) sahiptir.
 
 Normal akış dışında `ProcessPayment` metodu çağırıldığında iki olaya dikkat etmek gerekmektedir:
 
 1. PayU ile iletişim sırasında bir hata olması durumunda `PayU.PayuException` tipinden bir exception alınacaktır. Bu nedenle bu metod çağrısı sırasında `PayU.PayuException` hataları yakalanmalı ve uygun şekilde işlenmelidir.
-2. Eğer ödeme işlemi 3D-Secure ile yapılması gerekiyorsa o zaman `PayU.AutomaticLiveUpdate.AluResponse` nesnesinin `Is3DSResponse` alanı `true` olacaktır. Bu durumda son kullanıcı `AluResponse` nesnesinin `Url3DS` alanında döndürülen adrese yönlendirilmelidir. Bu adres PayU tarafından yönetilmektedir. Kullanıcı bu adreste 3D Secure işlemini tamamladıktan sonra PayU tarafından siparişte verilen `PayU.AutomaticLiveUpdate.OrderDetails` nesnesinin `ReturnUrl` alanındaki adrese geri yönlendirilecektir. Bu yönlendirme Automatic LiveUpdate sipariş sonucunu barındırmakta ve bu sonuç `PayU.AutomaticLiveUpdate.AluResponse.FromHttpRequest` metodu kullanarak alınmaktadır.
+2. Eğer ödeme işlemi 3D-Secure ile yapılması gerekiyorsa o zaman `PayU.AutomaticLiveUpdate.ALUResponse` nesnesinin `Is3DSResponse` alanı `true` olacaktır. Bu durumda son kullanıcı `ALUResponse` nesnesinin `Url3DS` alanında döndürülen adrese yönlendirilmelidir. Bu adres PayU tarafından yönetilmektedir. Kullanıcı bu adreste 3D Secure işlemini tamamladıktan sonra PayU tarafından siparişte verilen `PayU.AutomaticLiveUpdate.OrderDetails` nesnesinin `ReturnUrl` alanındaki adrese geri yönlendirilecektir. Bu yönlendirme Automatic LiveUpdate sipariş sonucunu barındırmakta ve bu sonuç `PayU.AutomaticLiveUpdate.ALUResponse.FromHttpRequest` metodu kullanarak alınmaktadır.
 
 Tipik bir Automatic LiveUpdate request/response şu şekilde olmalıdır:
 
@@ -119,6 +119,8 @@ Tipik bir Automatic LiveUpdate request/response şu şekilde olmalıdır:
   public partial class Default : System.Web.UI.Page
   {
     public void Page_Load() {
+      var service = new PayU.AutomaticLiveUpdate.ALUService('signatureKey');
+
       var order = new PayU.AutomaticLiveUpdate.OrderDetails();
 
       // ...
@@ -130,7 +132,7 @@ Tipik bir Automatic LiveUpdate request/response şu şekilde olmalıdır:
 
       try
       {
-        var response = AluRequest.ProcessPayment(parameters);
+        var response = service.ProcessPayment(parameters);
 
         if (response.Is3DSResponse) {
           // 3D Secure zorunlu. Kullaniciyi verilen adrese yonlendirmeliyiz.
@@ -162,8 +164,8 @@ Tipik bir Automatic LiveUpdate request/response şu şekilde olmalıdır:
   {
     public void Page_Load() {
       // 3D Secure sonucu cevap gelmis. Cevap alanlari POST edilmis olarak gelecegi
-      // icin bu alanlari kullanarak yeni bir AluResponse yaratmaliyiz.
-      var response = AluResponse.FromHttpRequest (Request);
+      // icin bu alanlari kullanarak yeni bir ALUResponse yaratmaliyiz.
+      var response = ALUResponse.FromHttpRequest (Request);
 
       // Buraya kadar geldiysek ALU'dan cevap gelmis demektir.
       // response nesnesinin alanlarina bakarak sonucu anlayabiliriz.

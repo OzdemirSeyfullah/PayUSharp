@@ -1,8 +1,8 @@
 ---
 title: |
-  PayUSharp
-
-  PayU Türkiye .NET Kütüphanesi Kullanım Kılavuzu
+  **PayUSharp** \
+  PayU Türkiye .NET Kütüphanesi \
+  Kullanım Kılavuzu
 author: '**Kütüphane Versiyonu** {{VERSION}}'
 date: '{{DATE}}'
 fontsize: 12pt

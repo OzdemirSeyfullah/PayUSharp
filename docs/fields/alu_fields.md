@@ -1,4 +1,4 @@
-| OrderDetails Alanı | Alan Tipi | PayU ALU İstek Alanı |
+| `OrderDetails` Alanı | Alan Tipi | PayU ALU İstek Alanı |
 | ----             | ---       | ---                 |
 | `Merchant` | `string` | `MERCHANT` |
 | `OrderRef` | `string` | `ORDER_REF` |
@@ -49,7 +49,7 @@
 | `CardProgramName` | `string` | `CARD_PROGRAM_NAME` |
 | `OrderTimeout` | `int?` | `ORDER_TIMEOUT` |
 
-| AluResponse Alanı | Alan Tipi | PayU ALU Cevap Alanı |
+| `ALUResponse` Alanı | Alan Tipi | PayU ALU Cevap Alanı |
 | ----             | ---       | ---                 |
 | `RefNo` | `string` | `REFNO` |
 | `Alias` | `string` | `ALIAS` |

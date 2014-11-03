@@ -9,6 +9,7 @@ using PayU;
 using Fasterflect;
 using System.Collections.Generic;
 using PayU.Core;
+using Newtonsoft.Json;
 
 namespace Doc
 {
@@ -35,6 +36,8 @@ namespace Doc
       Console.WriteLine("  Generated fields for LU");
       ProcessALU();
       Console.WriteLine("  Generated fields for ALU");
+      ProcessToken();
+      Console.WriteLine("  Generated fields for Token");
 
       OutputMetadata();
 
@@ -56,25 +59,40 @@ namespace Doc
       File.WriteAllText(filename, contents);
     }
 
+    static void ProcessToken()
+    {
+      using (var file = OpenFile("fields/token_fields.md")) {
+        file.WriteLine("| `TokenResponse` Alanı | Alan Tipi | PayU Token Cevap Alanı |");
+        file.WriteLine("| ----             | ---       | ---                 |");
+        Process<JsonPropertyAttribute>(typeof(PayU.Token.TokenResponse), (prop, attribute) => WritePropToFile("| `{0}` | `{2}` | `{1}` |", prop, attribute, file));
+
+        file.WriteLine();
+
+        file.WriteLine("| `TokenHistory` Alanı | Alan Tipi | PayU Token Cevap Alanı |");
+        file.WriteLine("| ----             | ---       | ---                 |");
+        Process<JsonPropertyAttribute>(typeof(PayU.Token.TokenHistory), (prop, attribute) => WritePropToFile("| `{0}` | `{2}` | `{1}` |", prop, attribute, file));
+      }
+    }
+
     static void ProcessALU()
     {
       using (var file = OpenFile("fields/alu_fields.md")) {
-        file.WriteLine("| OrderDetails Alanı | Alan Tipi | PayU ALU İstek Alanı |");
+        file.WriteLine("| `OrderDetails` Alanı | Alan Tipi | PayU ALU İstek Alanı |");
         file.WriteLine("| ----             | ---       | ---                 |");
         Process<ParameterAttribute>(typeof(PayU.AutomaticLiveUpdate.OrderDetails), (prop, attribute) => WritePropToFile("| `{0}` | `{2}` | `{1}` |", prop, attribute, file));
 
         file.WriteLine();
 
-        file.WriteLine("| AluResponse Alanı | Alan Tipi | PayU ALU Cevap Alanı |");
+        file.WriteLine("| `ALUResponse` Alanı | Alan Tipi | PayU ALU Cevap Alanı |");
         file.WriteLine("| ----             | ---       | ---                 |");
-        Process<XmlElementAttribute>(typeof(PayU.AutomaticLiveUpdate.AluResponse), (prop, attribute) => WritePropToFile("| `{0}` | `{2}` | `{1}` |", prop, attribute, file));
+        Process<XmlElementAttribute>(typeof(PayU.AutomaticLiveUpdate.ALUResponse), (prop, attribute) => WritePropToFile("| `{0}` | `{2}` | `{1}` |", prop, attribute, file));
       }
     }
 
     static void ProcessLU()
     {
       using (var file = OpenFile("fields/lu_fields.md")) {
-        file.WriteLine("| OrderDetails Alanı | Alan Tipi | PayU LiveUpdate Alanı |");
+        file.WriteLine("| `OrderDetails` Alanı | Alan Tipi | PayU LiveUpdate Alanı |");
         file.WriteLine("| ----             | ---       | ---                 |");
         Process<ParameterAttribute>(typeof(PayU.LiveUpdate.OrderDetails), (prop, attribute) => WritePropToFile("| `{0}` | `{2}` | `{1}` |", prop, attribute, file));
       }
@@ -83,7 +101,7 @@ namespace Doc
     static void ProcessIPN()
     {
       using (var file = OpenFile("fields/ipn_fields.md")) {
-        file.WriteLine("| IPNRequest Alanı | Alan Tipi | PayU IPN POST Alanı |");
+        file.WriteLine("| `IPNRequest` Alanı | Alan Tipi | PayU IPN POST Alanı |");
         file.WriteLine("| ----             | ---       | ---                 |");
         Process<XmlElementAttribute>(typeof(IPNProduct), (prop, attribute) => WritePropToFile("| `Products[idx].{0}` | `{2}` | `{1}[idx]` |", prop, attribute, file));
         Process<XmlElementAttribute>(typeof(IPNRequest), (prop, attribute) => WritePropToFile("| `{0}` | `{2}` | `{1}` |", prop, attribute, file));
@@ -107,6 +125,13 @@ namespace Doc
 
     private static StreamWriter OpenFile(string filename) {
       return new StreamWriter(RelativePath(filename), false);
+    }
+
+    private static void WritePropToFile(string format, PropertyInfo prop,  JsonPropertyAttribute attribute, StreamWriter file) {
+      file.WriteLine(format, prop.Name, attribute.PropertyName.Replace("[]", ""), prop.PropertyType.Name());
+      if (prop.Name.EndsWith("DateAsString")) {
+        file.WriteLine(format, prop.Name.Replace("DateAsString", ""), attribute.PropertyName, typeof(DateTime).Name());
+      }
     }
 
     private static void WritePropToFile(string format, PropertyInfo prop,  XmlElementAttribute attribute, StreamWriter file) {

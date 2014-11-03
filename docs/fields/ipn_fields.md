@@ -1,4 +1,4 @@
-| IPNRequest Alanı | Alan Tipi | PayU IPN POST Alanı |
+| `IPNRequest` Alanı | Alan Tipi | PayU IPN POST Alanı |
 | ----             | ---       | ---                 |
 | `Products[idx].Id` | `string` | `IPN_PID[idx]` |
 | `Products[idx].Name` | `string` | `IPN_PNAME[idx]` |

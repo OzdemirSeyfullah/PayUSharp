@@ -1,4 +1,4 @@
-| OrderDetails Alanı | Alan Tipi | PayU LiveUpdate Alanı |
+| `OrderDetails` Alanı | Alan Tipi | PayU LiveUpdate Alanı |
 | ----             | ---       | ---                 |
 | `Merchant` | `string` | `MERCHANT` |
 | `OrderRef` | `string` | `ORDER_REF` |
