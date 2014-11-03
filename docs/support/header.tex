@@ -34,7 +34,7 @@ Java,
     extendedchars=true,
     inputencoding=utf8/latin1,
     language=[Sharp]C,
-    basicstyle=\ttfamily,
+    basicstyle=\ttfamily\footnotesize,
     numbers=left,
     keywordstyle=\color[rgb]{0.13,0.29,0.53}\bfseries,
     stringstyle=\color[rgb]{0.31,0.60,0.02},
@@ -56,5 +56,61 @@ Java,
     basewidth=0.5em,
 }
 
+\definecolor{footer}{HTML}{999999}
+\definecolor{h2}{HTML}{1C3F95}
+\definecolor{h3}{HTML}{1C3F95}
+
+\nouppercaseheads
+\makepagestyle{mystyle}
+\setlength{\headwidth}{\dimexpr\textwidth+\marginparsep+\marginparwidth\relax}
+\makerunningwidth{mystyle}{\headwidth}
+
+%% HEADER
+\makeoddhead{mystyle}
+{} % left is empty
+{PayUSharp Kullanım Klavuzu} % the title
+{} % right is empty
+\makeheadrule{mystyle}{\headwidth}{\normalrulethickness}
+
+%% FOOTER
+\makeoddfoot{mystyle}
+{% -- Left is the RelayRobin image and name
+    \raisebox{-0.5\height}{\includegraphics[height=1cm]{support/payu}}
+}
+{% -- Center is page number
+    \thepage
+}
+{% -- Right is address
+    \textcolor{footer}{\fontsize{9pt}{22pt}\selectfont PayU Bilgi Teknolojileri ve Ödeme Hizmetleri A.Ş.}
+}
+\makefootrule{mystyle}{\headwidth}{\normalrulethickness}{\footruleskip}
+
+% - Style plain pages to just have a page number
+\makepagestyle{plain}
+\makerunningwidth{plain}{\headwidth}
+\makeoddfoot{plain}{}{\thepage}{}
+
+% - Set pagestyle to the one we defined
+\pagestyle{mystyle}
+
 % - Remove \tableofcontents' title/name
 \renewcommand{\contentsname}{}
+% - Make \tableofcontents behave like \tableofcontents*
+\makeatletter
+\renewcommand{\tableofcontents}{%
+  \vskip-5em
+  \@ifstar{\mem@tableofcontents{01}}
+          {\mem@tableofcontents{01}}%
+  \pagebreak
+}
+\makeatother
+% - Set ToC indentations
+\cftsetindents{subsection}{0em}{0em}
+\cftsetindents{subsubsection}{4.1em}{0em}
+
+% - Set section header look and feel
+\setsubsecheadstyle{\color{h2}\fontsize{18pt}{25pt}\selectfont\bfseries\memRTLraggedright}
+\setsubsubsecheadstyle{\color{h3}\selectfont\bfseries\memRTLraggedright}
+
+\setlength\LTleft{0pt}
+\setlength\LTright\fill

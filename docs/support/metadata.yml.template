@@ -5,8 +5,11 @@ title: |
   Kullanım Kılavuzu
 author: '**Kütüphane Versiyonu** {{VERSION}}'
 date: '{{DATE}}'
+documentclass: memoir
 fontsize: 12pt
 classoption: [oneside]
 geometry: [margin=1in]
 listings: true
+linkcolor: cyan
+lang: tr-TR
 ---
