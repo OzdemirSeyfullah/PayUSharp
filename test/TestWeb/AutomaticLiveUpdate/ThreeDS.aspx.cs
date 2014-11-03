@@ -12,7 +12,7 @@ namespace TestWeb
     public partial class ThreeDS : System.Web.UI.Page
     {
         public void Page_Load() {
-            var response = AluResponse.FromHttpRequest (Request);
+            var response = ALUResponse.FromHttpRequest (Request);
             var sb = new StringBuilder();
             sb.AppendLine ("<ul>");
             sb.AppendFormat("<li><b>{0}:</b> {1}", "RefNo", response.RefNo);
@@ -24,9 +24,8 @@ namespace TestWeb
             sb.AppendFormat("<li><b>{0}:</b> {1}", "Url3DS", response.Url3DS);
             sb.AppendFormat("<li><b>{0}:</b> {1}", "Hash", response.Hash);
             sb.AppendLine ("</ul>");
-            
+
             ltrOutput.Text = sb.ToString ();
         }
     }
 }
-

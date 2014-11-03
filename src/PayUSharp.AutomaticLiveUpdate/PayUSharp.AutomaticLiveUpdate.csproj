@@ -30,15 +30,15 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="AluRequest.cs" />
-    <Compile Include="AluResponse.cs" />
+    <Compile Include="ALURequest.cs" />
+    <Compile Include="ALUResponse.cs" />
     <Compile Include="BillingDetails.cs" />
     <Compile Include="CardDetails.cs" />
     <Compile Include="DeliveryDetails.cs" />
     <Compile Include="OrderDetails.cs" />
     <Compile Include="ProductDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AluService.cs" />
+    <Compile Include="ALUService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PayUSharp.Core\PayUSharp.Core.csproj">

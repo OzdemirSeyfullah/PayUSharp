@@ -12,9 +12,9 @@ namespace TestWeb
     public partial class Default : System.Web.UI.Page
     {
         public virtual void button1Clicked (object sender, EventArgs args)
-        {            
+        {
             var parameters = new OrderDetails();
-            
+
             parameters.Merchant = "TOKENTES";
             parameters.OrderRef = "EXT_" + new Random().Next(100000, 999999).ToString();
 
@@ -83,7 +83,7 @@ namespace TestWeb
             var sb = new StringBuilder();
 
             try {
-                var service = new AluService("4@ET=1()T=%y3S8b(r_]", null, true);
+                var service = new ALUService("4@ET=1()T=%y3S8b(r_]", null, true);
                 var response = service.ProcessPayment(parameters);
 
                 if (response.Is3DSResponse) {
@@ -102,7 +102,7 @@ namespace TestWeb
                 sb.AppendFormat("<li><b>{0}:</b> {1}", "Hash", response.Hash);
                 sb.AppendLine ("</ul>");
             }
-            catch (PayuException ex) 
+            catch (PayuException ex)
             {
                 sb.AppendFormat("Exception: {0}", ex);
             }
@@ -111,4 +111,3 @@ namespace TestWeb
         }
     }
 }
-

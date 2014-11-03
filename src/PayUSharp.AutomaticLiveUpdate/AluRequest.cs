@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -11,17 +11,17 @@ using System.Collections.Specialized;
 
 namespace PayU.AutomaticLiveUpdate
 {
-    internal class AluRequest
+    internal class ALURequest
     {
-        private AluRequest() {}
+        private ALURequest() {}
 
-        public static bool Validator (object sender, X509Certificate certificate, X509Chain chain, 
+        public static bool Validator (object sender, X509Certificate certificate, X509Chain chain,
                                       SslPolicyErrors sslPolicyErrors)
         {
             return true;
         }
 
-        public static string SendRequest(AluService service, NameValueCollection requestData)
+        public static string SendRequest(ALUService service, NameValueCollection requestData)
         {
             var webClient = new WebClient();
 

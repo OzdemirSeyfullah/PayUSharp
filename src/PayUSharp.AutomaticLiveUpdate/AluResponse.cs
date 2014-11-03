@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Web;
 using System.Xml.Serialization;
 using System.Text;
@@ -31,7 +31,7 @@ namespace PayU.AutomaticLiveUpdate
     }
 
     [XmlRoot(ROOT_ELEMENT_NAME)]
-    public class AluResponse
+    public class ALUResponse
     {
         private const string ROOT_ELEMENT_NAME = "EPAYMENT";
 
@@ -127,21 +127,21 @@ namespace PayU.AutomaticLiveUpdate
         }
 
         public bool Is3DSResponse {
-            get 
-            { 
+            get
+            {
                 return (ReturnCode == ReturnCodes.ThreeDSEnrolled &&
-                        Url3DS != null && 
+                        Url3DS != null &&
                         Url3DS != string.Empty);
             }
         }
 
-        public static AluResponse FromString(string response)
+        public static ALUResponse FromString(string response)
         {
             using (var stringReader = new StringReader(response))
-                return new XmlSerializer(typeof(AluResponse)).Deserialize(stringReader) as AluResponse;
+                return new XmlSerializer(typeof(ALUResponse)).Deserialize(stringReader) as ALUResponse;
         }
 
-        public static AluResponse FromHttpRequest(HttpRequest request)
+        public static ALUResponse FromHttpRequest(HttpRequest request)
         {
             var xmlStr = ConvertRequestFormToXml (request);
             return FromString (xmlStr);

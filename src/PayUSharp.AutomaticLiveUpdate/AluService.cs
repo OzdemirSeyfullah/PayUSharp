@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using PayU.Core;
 
 namespace PayU.AutomaticLiveUpdate
 {
-  public class AluService
+  public class ALUService
   {
     private readonly string DefaultEndpoint = "https://secure.payuodeme.com/order/alu.php";
 
@@ -11,7 +11,7 @@ namespace PayU.AutomaticLiveUpdate
     public string EndpointUrl { get; private set; }
     public bool IgnoreSSLCertificate { get; private set; }
 
-    public AluService(string signatureKey, string endpointUrl = null, bool ignoreSSLCertificate = false)
+    public ALUService(string signatureKey, string endpointUrl = null, bool ignoreSSLCertificate = false)
     {
       if (string.IsNullOrEmpty(signatureKey))
         throw new InvalidOperationException("Cannot instantiate with a null or empty SignatureKey.");
@@ -20,18 +20,17 @@ namespace PayU.AutomaticLiveUpdate
       this.IgnoreSSLCertificate = ignoreSSLCertificate;
     }
 
-    public AluResponse ProcessPayment(OrderDetails parameters)
+    public ALUResponse ProcessPayment(OrderDetails parameters)
     {
       var parameterHandler = new ParameterHandler(parameters);
       parameterHandler.CreateOrderRequestHash(this.SignatureKey);
       var requestData = parameterHandler.GetRequestData();
 
-      var response = AluRequest.SendRequest(this, requestData);
+      var response = ALURequest.SendRequest(this, requestData);
 
       //Console.WriteLine("Response: {0}", response);
 
-      return AluResponse.FromString(response);
+      return ALUResponse.FromString(response);
     }
   }
 }
-
