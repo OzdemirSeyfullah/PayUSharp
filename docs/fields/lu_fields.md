@@ -33,6 +33,10 @@
 | `BillingDetails.ZipCode` | `string` | `BILL_ZIPCODE` |
 | `BillingDetails.City` | `string` | `BILL_CITY` |
 | `BillingDetails.State` | `string` | `BILL_STATE` |
+| `BillingDetails.FiscalCode` | `string` | `BILL_FISCALCODE` |
+| `BillingDetails.RegNumber` | `string` | `BILL_REGNUMBER` |
+| `BillingDetails.Bank` | `string` | `BILL_BANK` |
+| `BillingDetails.BankAccount` | `string` | `BILL_BANKACCOUNT` |
 | `DeliveryDetails.LastName` | `string` | `DELIVERY_LNAME` |
 | `DeliveryDetails.FirstName` | `string` | `DELIVERY_FNAME` |
 | `DeliveryDetails.Email` | `string` | `DELIVERY_EMAIL` |

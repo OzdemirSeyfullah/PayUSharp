@@ -39,6 +39,18 @@ namespace PayU.Core.Base
         
         [Parameter(Name = "BILL_STATE")]
         public string State { get; set; }
-    }
+
+        [Parameter(Name = "BILL_FISCALCODE")]
+        public string FiscalCode { get; set; }
+
+        [Parameter(Name = "BILL_REGNUMBER")]
+        public string RegNumber { get; set; }
+
+        [Parameter(Name = "BILL_BANK")]
+        public string Bank { get; set; }
+
+        [Parameter(Name = "BILL_BANKACCOUNT")]
+        public string BankAccount { get; set; }
+  }
 }
 

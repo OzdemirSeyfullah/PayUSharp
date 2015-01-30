@@ -25,6 +25,10 @@
 | `BillingDetails.ZipCode` | `string` | `BILL_ZIPCODE` |
 | `BillingDetails.City` | `string` | `BILL_CITY` |
 | `BillingDetails.State` | `string` | `BILL_STATE` |
+| `BillingDetails.FiscalCode` | `string` | `BILL_FISCALCODE` |
+| `BillingDetails.RegNumber` | `string` | `BILL_REGNUMBER` |
+| `BillingDetails.Bank` | `string` | `BILL_BANK` |
+| `BillingDetails.BankAccount` | `string` | `BILL_BANKACCOUNT` |
 | `CardDetails.CardNumber` | `string` | `CC_NUMBER` |
 | `CardDetails.ExpiryMonth` | `string` | `EXP_MONTH` |
 | `CardDetails.ExpiryYear` | `string` | `EXP_YEAR` |
