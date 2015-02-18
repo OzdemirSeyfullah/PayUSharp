@@ -21,7 +21,7 @@ namespace PayU.Token
     [JsonProperty("EXPIRATION_DATE")]
     public string ExpirationDate { get; set; }
 
-    [JsonProperty("HISTORY")]
+    [JsonIgnore]
     public IDictionary<int, TokenHistory> History { get; set; }
 	}
 

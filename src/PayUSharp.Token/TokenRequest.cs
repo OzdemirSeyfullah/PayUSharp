@@ -8,6 +8,7 @@ using System.Linq;
 using System.Globalization;
 using System.Collections.Specialized;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PayU.Core;
 
 namespace PayU.Token
@@ -91,10 +92,8 @@ namespace PayU.Token
         if (Service.IgnoreSSLCertificate) {
           ServicePointManager.ServerCertificateValidationCallback = Validator;
         }
-//        Console.WriteLine("Posting data: {0}", string.Join(", ", data.AllKeys.Select(key => key + ": " + data[key]).ToArray()));
         var response = Encoding.UTF8.GetString(webClient.UploadValues(Endpoint, data));
-//        Console.WriteLine("Response is: {0}", response);
-        return JsonConvert.DeserializeObject<TokenResponse>(response);
+        return ParseResponse(response);
       }
       catch (WebException ex)
       {
@@ -106,8 +105,33 @@ namespace PayU.Token
       }
       catch (Exception ex)
       {
-        throw new PayuException("An exception occured during ALU request", ex);
+        throw new PayuException("An exception occured during Token request", ex);
       }
+    }
+
+    static TokenResponse ParseResponse(string stringResponse)
+    {
+      var result = JsonConvert.DeserializeObject<TokenResponse>(stringResponse);
+      result.History = ParseHistory(stringResponse);
+      return result;
+    }
+
+    static IDictionary<int, TokenHistory> ParseHistory(string stringResponse)
+    {
+      var jsonResponse = JObject.Parse(stringResponse);
+      var history = jsonResponse["HISTORY"];
+      switch (history.Type)
+      {
+        case JTokenType.Array:
+          return history.Select((value, index) => new {
+            value = JsonConvert.DeserializeObject<TokenHistory>(value.ToString()),
+            index = index
+          }).ToDictionary(v => v.index, v => v.value);
+        case JTokenType.Object:
+          return JsonConvert.DeserializeObject<Dictionary<int, TokenHistory>>(history.ToString());
+      }
+
+      return null;
     }
 
     public static bool Validator (object sender, X509Certificate certificate, X509Chain chain, 
