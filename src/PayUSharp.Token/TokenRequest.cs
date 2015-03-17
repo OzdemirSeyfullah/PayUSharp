@@ -22,21 +22,31 @@ namespace PayU.Token
       TOKEN_CANCEL
     }
 
-    internal TokenRequest(TokenService service) {
+    internal TokenRequest(TokenService service)
+    {
       this.Service = service;
     }
 
     public TokenService Service { get; private set; }
+
     public string Merchant { get; set; }
+
     public string ReferenceNumber { get; set; }
+
     public string ExternalReference { get; set; }
+
     public decimal? Amount { get; set; }
+
     public string Currency { get; set; }
+
     public string Timestamp { get { return DateTime.UtcNow.ToString("yyyyMMddHHmmss"); } }
+
     public MethodType Method { get; set; }
+
     public string CancelReason { get; set; }
 
-    private string GetSignature(NameValueCollection data, string SignatureKey) {
+    private string GetSignature(NameValueCollection data, string SignatureKey)
+    {
       var builder = new StringBuilder();
 
       foreach (string key in data.AllKeys.OrderBy(k => k))
@@ -51,7 +61,8 @@ namespace PayU.Token
       return str.HashWithSignature(Service.SignatureKey);
     }
 
-    private Dictionary<string, object> GetData() {
+    private Dictionary<string, object> GetData()
+    {
       return new Dictionary<string, object>()
       {
         { "MERCHANT"     , Merchant },
@@ -65,7 +76,8 @@ namespace PayU.Token
       };
     }
 
-    private NameValueCollection GetRequestData(string SignatureKey) {
+    private NameValueCollection GetRequestData(string SignatureKey)
+    {
       var result = new NameValueCollection();
 
       foreach (var pair in GetData())
@@ -75,7 +87,7 @@ namespace PayU.Token
           continue;
         }
 
-        result.Add(pair.Key, string.Format (CultureInfo.InvariantCulture, "{0}", pair.Value));
+        result.Add(pair.Key, string.Format(CultureInfo.InvariantCulture, "{0}", pair.Value));
       }
 
       result.Add("SIGN", GetSignature(result, SignatureKey));
@@ -83,13 +95,15 @@ namespace PayU.Token
       return result;
     }
 
-    public TokenResponse SendRequest(string Endpoint, string SignatureKey) {
+    public TokenResponse SendRequest(string Endpoint, string SignatureKey)
+    {
       var webClient = new WebClient();
       var data = GetRequestData(SignatureKey);
-        
+
       try
       {
-        if (Service.IgnoreSSLCertificate) {
+        if (Service.IgnoreSSLCertificate)
+        {
           ServicePointManager.ServerCertificateValidationCallback = Validator;
         }
         var response = Encoding.UTF8.GetString(webClient.UploadValues(Endpoint, data));
@@ -120,6 +134,7 @@ namespace PayU.Token
     {
       var jsonResponse = JObject.Parse(stringResponse);
       var history = jsonResponse["HISTORY"];
+
       switch (history.Type)
       {
         case JTokenType.Array:
@@ -134,12 +149,11 @@ namespace PayU.Token
       return null;
     }
 
-    public static bool Validator (object sender, X509Certificate certificate, X509Chain chain, 
-      SslPolicyErrors sslPolicyErrors)
+    public static bool Validator(object sender, X509Certificate certificate, X509Chain chain,
+                                 SslPolicyErrors sslPolicyErrors)
     {
       return true;
     }
 
   }
 }
-
