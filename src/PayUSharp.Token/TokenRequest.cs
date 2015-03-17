@@ -135,6 +135,12 @@ namespace PayU.Token
       var jsonResponse = JObject.Parse(stringResponse);
       var history = jsonResponse["HISTORY"];
 
+      if (history == null)
+      {
+        // Sometimes there is no HISTORY element in returned data.
+        return null;
+      }
+
       switch (history.Type)
       {
         case JTokenType.Array:
