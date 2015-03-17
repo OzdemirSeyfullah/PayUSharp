@@ -97,7 +97,6 @@ Global
 		{E2F4B950-7EBC-445D-949C-16C94E2AE99C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = util\DocGen\Doc.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
 		$1.TabWidth = 2
@@ -142,7 +141,7 @@ Global
 		$0.DotNetNamingPolicy = $4
 		$4.DirectoryNamespaceAssociation = PrefixedHierarchical
 		$4.ResourceNamePolicy = FileFormatDefault
-		version = 2.0.1.1
+		version = 2.0.1.2
 	EndGlobalSection
     GlobalSection(SolutionProperties) = preSolution
         HideSolutionNode = FALSE

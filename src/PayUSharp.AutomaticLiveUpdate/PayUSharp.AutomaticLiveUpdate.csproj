@@ -7,7 +7,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>PayU.AutomaticLiveUpdate</RootNamespace>
     <AssemblyName>PayUSharp.AutomaticLiveUpdate</AssemblyName>
-    <ReleaseVersion>2.0.1.1</ReleaseVersion>
+    <ReleaseVersion>2.0.1.2</ReleaseVersion>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
