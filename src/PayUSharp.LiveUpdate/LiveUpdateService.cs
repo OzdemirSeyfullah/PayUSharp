@@ -6,7 +6,7 @@ namespace PayU.LiveUpdate
 {
   public class LiveUpdateService
   {
-    private readonly string DefaultEndpoint = "https://secure.payuodeme.com/order/lu.php";
+    private readonly string DefaultEndpoint = "https://secure.payu.com.tr/order/lu.php";
 
     public string SignatureKey { get; private set; }
     public string EndpointUrl { get; private set; }
