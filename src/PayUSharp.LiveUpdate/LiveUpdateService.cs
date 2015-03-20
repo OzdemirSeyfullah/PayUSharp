@@ -70,4 +70,3 @@ namespace PayU.LiveUpdate
     }
   }
 }
-
