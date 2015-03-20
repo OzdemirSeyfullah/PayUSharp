@@ -5,7 +5,7 @@ namespace PayU.AutomaticLiveUpdate
 {
   public class ALUService
   {
-    private readonly string DefaultEndpoint = "https://secure.payu.com.tr/order/alu.php";
+    private readonly string DefaultEndpoint = "https://secure.payu.com.tr/order/alu/v3";
 
     public string SignatureKey { get; private set; }
     public string EndpointUrl { get; private set; }
