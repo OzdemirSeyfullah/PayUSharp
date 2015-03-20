@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using PayU.Core;
 
@@ -28,7 +28,7 @@ namespace PayU.LiveUpdate
     {
       var sb = new StringBuilder();
 
-      sb.AppendFormat(@"<form action=""{0}"" method=""POST"" id=""{1}"" name=""{2}""/>", EndpointUrl, formId, formId);
+      sb.AppendFormat(@"<form action=""{0}"" method=""POST"" id=""{1}"" name=""{2}"">", EndpointUrl, formId, formId);
       sb.AppendLine();
       sb.Append(RenderPaymentInputs(order));
       sb.AppendFormat(@"<input type=""submit"" value=""{0}"">", buttonName);
