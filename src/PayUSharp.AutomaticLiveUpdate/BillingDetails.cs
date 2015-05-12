@@ -1,6 +1,6 @@
 ﻿namespace PayU.AutomaticLiveUpdate
 {
-    public class BillingDetails: PayU.Core.Base.BillingDetails
-    {
-    }
+  public class BillingDetails: PayU.Core.Base.BillingDetails
+  {
+  }
 }

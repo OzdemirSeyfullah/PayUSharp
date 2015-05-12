@@ -58,7 +58,14 @@ namespace TestApp
             order.ClientTime = DateTime.UtcNow;
             order.SelectedInstallmentNumber = 1;
 
-            var service = new ALUService("4@ET=1()T=%y3S8b(r_]", "https://secure.payu.com.tr/order/alu/v2");
+            order.UseLoyaltyPoints = true;
+            order.LoyaltyPointsAmount = 0.12M;
+            order.ShippingCost = 1.32M;
+
+            order.SelectedInstallmentNumber = 5;
+            order.CampaignType = CampaignType.DelayInstallments;
+
+            var service = new ALUService("4@ET=1()T=%y3S8b(r_]");
             var response = service.ProcessPayment(order);
 
             Console.WriteLine("Successful: {0}", response.IsSuccess);
