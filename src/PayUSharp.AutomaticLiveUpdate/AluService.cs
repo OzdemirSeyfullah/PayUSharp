@@ -8,7 +8,9 @@ namespace PayU.AutomaticLiveUpdate
     private readonly string DefaultEndpoint = "https://secure.payu.com.tr/order/alu/v3";
 
     public string SignatureKey { get; private set; }
+
     public string EndpointUrl { get; private set; }
+
     public bool IgnoreSSLCertificate { get; private set; }
 
     public ALUService(string signatureKey, string endpointUrl = null, bool ignoreSSLCertificate = false)
