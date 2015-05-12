@@ -86,6 +86,13 @@ namespace Doc
         file.WriteLine("| `ALUResponse` Alanı | Alan Tipi | PayU ALU Cevap Alanı |");
         file.WriteLine("| ----             | ---       | ---                 |");
         Process<XmlElementAttribute>(typeof(PayU.AutomaticLiveUpdate.ALUResponse), (prop, attribute) => WritePropToFile("| `{0}` | `{2}` | `{1}` |", prop, attribute, file));
+        Process<XmlArrayAttribute>(typeof(PayU.AutomaticLiveUpdate.ALUResponse), (prop, attribute) => WritePropToFile("| `{0}` | `{2}` | `{1}` |", prop, attribute, file));
+
+        file.WriteLine();
+
+        file.WriteLine("| `WireAccount` Alanı | Alan Tipi | PayU ALU Cevap Alanı |");
+        file.WriteLine("| ----             | ---       | ---                 |");
+        Process<XmlElementAttribute>(typeof(PayU.AutomaticLiveUpdate.WireAccount), (prop, attribute) => WritePropToFile("| `{0}` | `{2}` | `{1}` |", prop, attribute, file));
       }
     }
 
@@ -135,6 +142,13 @@ namespace Doc
     }
 
     private static void WritePropToFile(string format, PropertyInfo prop,  XmlElementAttribute attribute, StreamWriter file) {
+      file.WriteLine(format, prop.Name, attribute.ElementName.Replace("[]", ""), prop.PropertyType.Name());
+      if (prop.Name.EndsWith("DateAsString")) {
+        file.WriteLine(format, prop.Name.Replace("DateAsString", ""), attribute.ElementName, typeof(DateTime).Name());
+      }
+    }
+
+    private static void WritePropToFile(string format, PropertyInfo prop,  XmlArrayAttribute attribute, StreamWriter file) {
       file.WriteLine(format, prop.Name, attribute.ElementName.Replace("[]", ""), prop.PropertyType.Name());
       if (prop.Name.EndsWith("DateAsString")) {
         file.WriteLine(format, prop.Name.Replace("DateAsString", ""), attribute.ElementName, typeof(DateTime).Name());
