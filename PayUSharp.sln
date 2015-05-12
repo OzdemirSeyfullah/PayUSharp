@@ -141,7 +141,7 @@ Global
 		$0.DotNetNamingPolicy = $4
 		$4.DirectoryNamespaceAssociation = PrefixedHierarchical
 		$4.ResourceNamePolicy = FileFormatDefault
-		version = 2.0.2.0
+		version = 2.1.0.0
 	EndGlobalSection
     GlobalSection(SolutionProperties) = preSolution
         HideSolutionNode = FALSE

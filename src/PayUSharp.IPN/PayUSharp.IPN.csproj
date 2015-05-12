@@ -8,7 +8,7 @@
     <RootNamespace>PayU.IPN</RootNamespace>
     <AssemblyName>PayUSharp.IPN</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <ReleaseVersion>2.0.2.0</ReleaseVersion>
+    <ReleaseVersion>2.1.0.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
