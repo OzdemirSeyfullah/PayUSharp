@@ -48,5 +48,17 @@ namespace PayU.AutomaticLiveUpdate
 
     [Parameter(Name = "ORDER_TIMEOUT")]
     public int? OrderTimeout { get; set; }
+
+    [Parameter(Name = "USE_LOYALTY_POINTS", FormatString = "{0:YES;NO;NO}")]
+    public bool? UseLoyaltyPoints { get; set; }
+
+    [Parameter(Name = "LOYALTY_POINTS_AMOUNT")]
+    public decimal? LoyaltyPointsAmount { get; set; }
+
+    [Parameter(Name = "CAMPAIGN_TYPE")]
+    public CampaignType CampaignType { get; set; }
+
+    [Parameter(Name = "ORDER_SHIPPING")]
+    public decimal? ShippingCost { get; set; }
   }
 }

@@ -21,5 +21,8 @@ namespace PayU.AutomaticLiveUpdate
 
     [Parameter(Name = "CC_OWNER")]
     public string CardOwnerName { get; set; }
+
+    [Parameter(Name = "CC_TOKEN")]
+    public string Token { get; set; }
   }
 }
