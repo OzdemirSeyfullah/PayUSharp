@@ -1,5 +1,6 @@
 using System;
 using PayU.Core;
+using System.Linq;
 
 namespace PayU.AutomaticLiveUpdate
 {
@@ -27,6 +28,8 @@ namespace PayU.AutomaticLiveUpdate
       var parameterHandler = new ParameterHandler(parameters);
       parameterHandler.CreateOrderRequestHash(this.SignatureKey);
       var requestData = parameterHandler.GetRequestData();
+
+      //Console.WriteLine("Request is {0}", string.Join(", ", requestData.AllKeys.Select(key => key + ": " + requestData[key]).ToArray()));
 
       var response = ALURequest.SendRequest(this, requestData);
 
