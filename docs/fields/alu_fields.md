@@ -35,6 +35,7 @@
 | `CardDetails.CardType` | `string` | `CC_TYPE` |
 | `CardDetails.CVV` | `string` | `CC_CVV` |
 | `CardDetails.CardOwnerName` | `string` | `CC_OWNER` |
+| `CardDetails.Token` | `string` | `CC_TOKEN` |
 | `DeliveryDetails.LastName` | `string` | `DELIVERY_LNAME` |
 | `DeliveryDetails.FirstName` | `string` | `DELIVERY_FNAME` |
 | `DeliveryDetails.Email` | `string` | `DELIVERY_EMAIL` |
@@ -52,6 +53,10 @@
 | `SelectedInstallmentNumber` | `int?` | `SELECTED_INSTALLMENTS_NUMBER` |
 | `CardProgramName` | `string` | `CARD_PROGRAM_NAME` |
 | `OrderTimeout` | `int?` | `ORDER_TIMEOUT` |
+| `UseLoyaltyPoints` | `bool?` | `USE_LOYALTY_POINTS` |
+| `LoyaltyPointsAmount` | `decimal?` | `LOYALTY_POINTS_AMOUNT` |
+| `CampaignType` | `CampaignType` | `CAMPAIGN_TYPE` |
+| `ShippingCost` | `decimal?` | `ORDER_SHIPPING` |
 
 | `ALUResponse` Alanı | Alan Tipi | PayU ALU Cevap Alanı |
 | ----             | ---       | ---                 |
@@ -65,6 +70,8 @@
 | `InstallmentNumber` | `string` | `INSTALLMENTS_NO` |
 | `CardProgramName` | `string` | `CARD_PROGRAM_NAME` |
 | `Url3DS` | `string` | `URL_3DS` |
+| `Amount` | `decimal?` | `AMOUNT` |
+| `OrderRef` | `string` | `ORDER_REF` |
 | `Hash` | `string` | `HASH` |
 | `AuthCode` | `string` | `AUTH_CODE` |
 | `RRN` | `string` | `RRN` |
@@ -83,3 +90,16 @@
 | `PAN` | `string` | `PAN` |
 | `ExpiryYear` | `string` | `EXPYEAR` |
 | `ExpiryMonth` | `string` | `EXPMONTH` |
+| `TokenHash` | `string` | `TOKEN_HASH` |
+| `WireAccounts` | `WireAccount[]` | `WIRE_ACCOUNTS` |
+
+| `WireAccount` Alanı | Alan Tipi | PayU ALU Cevap Alanı |
+| ----             | ---       | ---                 |
+| `BankIdentifier` | `string` | `BANK_IDENTIFIER` |
+| `BankAccount` | `string` | `BANK_ACCOUNT` |
+| `RoutingNumber` | `string` | `ROUTING_NUMBER` |
+| `IbanAccount` | `string` | `IBAN_ACCOUNT` |
+| `BankSwift` | `string` | `BANK_SWIFT` |
+| `Country` | `string` | `COUNTRY` |
+| `WireRecipient` | `string` | `WIRE_RECIPIENT` |
+| `WireRecipientVatId` | `string` | `WIRE_RECIPIENT_VAT_ID` |
