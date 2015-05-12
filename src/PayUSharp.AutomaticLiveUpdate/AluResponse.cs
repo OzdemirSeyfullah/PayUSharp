@@ -30,6 +30,8 @@ namespace PayU.AutomaticLiveUpdate
     public static readonly string InvalidCurrency = "INVALID_CURRENCY";
     public static readonly string RequestExpired = "REQUEST_EXPIRED";
     public static readonly string HashMismatch = "HASH_MISMATCH";
+    public static readonly string WrongVersion = "WRONG_VERSION";
+    public static readonly string InvalidCCToken = "INVALID_CC_TOKEN";
   }
 
   [XmlRoot(ROOT_ELEMENT_NAME)]
@@ -66,6 +68,12 @@ namespace PayU.AutomaticLiveUpdate
 
     [XmlElement("URL_3DS")]
     public string Url3DS { get; set; }
+
+    [XmlElement("AMOUNT")]
+    public decimal? Amount { get; set; }
+
+    [XmlElement("ORDER_REF")]
+    public string OrderRef { get; set; }
 
     [XmlElement("HASH")]
     public string Hash { get; set; }
@@ -122,6 +130,14 @@ namespace PayU.AutomaticLiveUpdate
 
     [XmlElement("EXPMONTH")]
     public string ExpiryMonth { get; set; }
+
+    /*  ALU v3 fields */
+    [XmlArray("WIRE_ACCOUNTS")]
+    [XmlArrayItem("ITEM", typeof(WireAccount))]
+    public WireAccount[] WireAccounts { get; set; }
+
+    [XmlElement("TOKEN_HASH")]
+    public string TokenHash { get; set; }
 
     public bool IsSuccess
     {
