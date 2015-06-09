@@ -23,8 +23,13 @@ namespace PayU.IPN
 
     public IPNRequest ParseRequest(string response)
     {
+      // Make sure there is no preceeding/trailing whitespace in the XML response.
+      response = response.Trim();
+
       using (var stringReader = new StringReader(response))
+      {
         return new XmlSerializer(typeof(IPNRequest)).Deserialize(stringReader) as IPNRequest;
+      }
     }
 
     public IPNRequest ParseRequest(System.Web.HttpRequest request)

@@ -156,8 +156,12 @@ namespace PayU.AutomaticLiveUpdate
 
     public static ALUResponse FromString(string response)
     {
-      using (var stringReader = new StringReader(response))
-        return new XmlSerializer(typeof(ALUResponse)).Deserialize(stringReader) as ALUResponse;
+			// Make sure there is no preceeding/trailing whitespace in the XML response.
+			response = response.Trim();
+
+			using (var stringReader = new StringReader(response)) {
+				return new XmlSerializer(typeof(ALUResponse)).Deserialize(stringReader) as ALUResponse;
+			}
     }
 
     public static ALUResponse FromHttpRequest(HttpRequest request)
