@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Xml.Serialization;
 using System.Collections.Specialized;
@@ -45,7 +45,7 @@ namespace PayU.IPN
     }
 
     public string GenerateResponseForRequest(IPNRequest request) {
-      var hash = string.Empty; 
+      var hash = string.Empty;
       var now = DateTime.Now.ToString("yyyyMMddHHmmss");
       var hashStr = new StringBuilder();
 
@@ -62,4 +62,3 @@ namespace PayU.IPN
     }
   }
 }
-
